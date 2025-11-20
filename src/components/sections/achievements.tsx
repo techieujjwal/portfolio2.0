@@ -40,9 +40,7 @@ export function Achievements() {
             >
               <div className="p-6 rounded-xl border bg-card hover:shadow-lg transition-all">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-full bg-primary/10 text-primary text-2xl">
-                    {achievement.icon}
-                  </div>
+                 
                   <div className="flex-1">
                     <h3 className="text-2xl font-semibold mb-1">{achievement.title}</h3>
                     <p className="text-primary font-medium mb-3">{achievement.organization}</p>
