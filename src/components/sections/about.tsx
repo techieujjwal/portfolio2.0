@@ -92,11 +92,7 @@ export function About() {
                           {edu.location}
                         </span>
                       </div>
-                      {edu.gpa && (
-                        <p className="mt-2 text-sm font-medium">
-                          GPA: {edu.gpa}
-                        </p>
-                      )}
+                      
                     </div>
                   </div>
                 </motion.div>
