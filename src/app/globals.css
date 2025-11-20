@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-playfair);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Custom color palette variables */
+  --color-lavender: var(--lavender);
+  --color-lavender-light: var(--lavender-light);
+  --color-lavender-dark: var(--lavender-dark);
+  --color-teal: var(--teal);
+  --color-teal-light: var(--teal-light);
+  --color-teal-dark: var(--teal-dark);
+}
+
+:root {
+  --radius: 0.625rem;
+  
+  /* Custom Color Palette - Light Mode */
+  /* White, Lavender, and Teal Green Theme */  
+  /* Base Colors */
+  --white: oklch(1 0 0);
+  --lavender: oklch(0.84 0.05 290); /* Soft lavender */
+  --lavender-light: oklch(0.92 0.03 290);
+  --lavender-dark: oklch(0.72 0.08 290);
+  --teal: oklch(0.71 0.11 180); /* Teal green */
+  --teal-light: oklch(0.82 0.08 180);
+  --teal-dark: oklch(0.58 0.14 180);
+  
+  /* Light Mode Theme */
+  --background: var(--white);
+  --foreground: oklch(0.2 0.02 260);
+  --card: var(--white);
+  --card-foreground: oklch(0.2 0.02 260);
+  --popover: var(--white);
+  --popover-foreground: oklch(0.2 0.02 260);
+  --primary: var(--teal);
+  --primary-foreground: var(--white);
+  --secondary: var(--lavender-light);
+  --secondary-foreground: oklch(0.2 0.02 260);
+  --muted: oklch(0.97 0.01 260);
+  --muted-foreground: oklch(0.5 0.03 260);
+  --accent: var(--lavender);
+  --accent-foreground: oklch(0.2 0.02 260);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.94 0.01 260);
+  --input: oklch(0.94 0.01 260);
+  --ring: var(--teal);
+  
+  /* Chart colors with lavender and teal variations */  --chart-1: var(--teal);
+  --chart-2: var(--lavender);
+  --chart-3: var(--teal-light);
+  --chart-4: var(--lavender-light);
+  --chart-5: var(--teal-dark);
+  
+  /* Sidebar colors */
+  --sidebar: var(--white);
+  --sidebar-foreground: oklch(0.2 0.02 260);
+  --sidebar-primary: var(--teal);
+  --sidebar-primary-foreground: var(--white);
+  --sidebar-accent: var(--lavender-light);
+  --sidebar-accent-foreground: oklch(0.2 0.02 260);
+  --sidebar-border: oklch(0.94 0.01 260);
+  --sidebar-ring: var(--teal);
+}
+
+.dark {
+  /* Dark Mode Theme with lavender and teal accents */
+  --background: oklch(0.15 0.02 260);
+  --foreground: oklch(0.98 0.01 260);
+  --card: oklch(0.18 0.02 260);
+  --card-foreground: oklch(0.98 0.01 260);
+  --popover: oklch(0.18 0.02 260);
+  --popover-foreground: oklch(0.98 0.01 260);
+  --primary: var(--teal);
+  --primary-foreground: oklch(0.15 0.02 260);
+  --secondary: var(--lavender-dark);
+  --secondary-foreground: oklch(0.98 0.01 260);
+  --muted: oklch(0.25 0.02 260);
+  --muted-foreground: oklch(0.7 0.02 260);  --accent: var(--lavender);
+  --accent-foreground: oklch(0.98 0.01 260);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: var(--teal);
+  
+  /* Dark mode chart colors */
+  --chart-1: var(--teal-light);
+  --chart-2: var(--lavender-light);
+  --chart-3: var(--teal);
+  --chart-4: var(--lavender);
+  --chart-5: var(--teal-dark);
+  
+  /* Dark mode sidebar */
+  --sidebar: oklch(0.18 0.02 260);
+  --sidebar-foreground: oklch(0.98 0.01 260);
+  --sidebar-primary: var(--teal);
+  --sidebar-primary-foreground: oklch(0.98 0.01 260);
+  --sidebar-accent: var(--lavender);
+  --sidebar-accent-foreground: oklch(0.98 0.01 260);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: var(--teal);
+}
+
+/* Dark mode enhancements with lavender and teal gradient */
+.dark body {
+  background-color: var(--background);
+  background-image: 
+    radial-gradient(circle at 50% 50%, oklch(0.84 0.05 290 / 0.15) 0%, transparent 70%),
+    radial-gradient(circle at 100% 0%, oklch(0.71 0.11 180 / 0.1) 0%, transparent 40%);}
+
+/* Improved animations for dark mode */
+.dark [data-scroll].in-view {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom styles for lavender and teal theme */
+.gradient-text {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--lavender) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--lavender) 100%);
+}
+
+/* Custom hover effects */
+.hover-teal {
+  transition: all 0.3s ease;
+}
+
+.hover-teal:hover {
+  color: var(--teal);
+  transform: translateY(-2px);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
