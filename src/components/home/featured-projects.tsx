@@ -2,20 +2,21 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, ChevronRight, Grid } from "lucide-react"; // Simpler icons
+import { ChevronRight, Grid } from "lucide-react"; // Removed unused ArrowRight
 import { ProjectCard } from "@/components/ui/project-card";
-import { Button } from "@/components/ui/button";
-import { projects, Project } from "@/data/projects"; 
+import { Button } from "@/components/ui/button"; // Button is now used only in JSX, not in imports list
 import { 
   ScrollReveal, 
   StaggerContainer, 
   StaggerItem,
-} from "@/components/animations"; // MagneticButton removed
+} from "@/components/animations"; 
+import { projects, Project } from "@/data/projects"; 
+
 
 const FEATURED_PROJECT_IDS = [
-  "billrewards",
-  "cryptovault-ipfs",
-  "lightning-time"
+  "syncverse", 
+  "community-dashboard",
+  "student-result-analyzer"
 ];
 
 const useFeaturedProjects = (): Project[] => {
@@ -35,20 +36,17 @@ export function FeaturedProjects() {
                  bg-white dark:bg-gray-950 
                  text-gray-900 dark:text-gray-50 
                  relative overflow-hidden 
-                 border-t border-gray-200 dark:border-gray-800" // Subtle top border
+                 border-t border-gray-200 dark:border-gray-800"
     >
-      {/* Removed Three.js placeholder for a cleaner, less "template" feel */}
-      
       <div className="container mx-auto px-6 relative z-10">
         
-        {/* --- Header Section: Clean, impactful typography --- */}
         <ScrollReveal delay={0.1} width="100%">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="text-center mb-16 max-w-4xl mx-auto" // Centered and constrained width
+            className="text-center mb-16 max-w-4xl mx-auto"
           >
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 mb-3 flex items-center justify-center">
               <Grid className="w-4 h-4 mr-2" />
@@ -64,7 +62,6 @@ export function FeaturedProjects() {
           </motion.div>
         </ScrollReveal>
         
-        {/* --- Minimalist Separator --- */}
         <div className="flex justify-center mb-20">
           <motion.div 
             initial={{ scaleX: 0, opacity: 0 }}
@@ -75,13 +72,11 @@ export function FeaturedProjects() {
           />
         </div>
 
-        {/* --- Projects Grid: Clean cards, subtle interaction --- */}
         <div className="max-w-7xl mx-auto">
           {featuredProjects.length > 0 && (
             <StaggerContainer 
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
-              stagger={0.15}
-              delay={0.4}
+              // Removed stagger={0.15} and delay={0.4} to fix Type Error
             >
               {featuredProjects.map((project) => (
                 <StaggerItem 
@@ -107,7 +102,6 @@ export function FeaturedProjects() {
           )}
         </div>
 
-        {/* --- Call to Action Button: Stable, clear, and inviting --- */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
