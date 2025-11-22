@@ -41,7 +41,7 @@ export const projects: Project[] = [
       "Potential integration with Supabase for auth and persistence",
       "Responsive layout optimized for both desktop and mobile"
     ],
-    image: "",
+    image: "/images/projects/syncverse/syncverse.webp",
     demoUrl: "https://sync-verse01.vercel.app",
     githubUrl: "https://github.com/techieujjwal/syncVerse01",
     category: "ai"
@@ -69,8 +69,8 @@ export const projects: Project[] = [
       "Functional contact form integrated via Formspree",
       "Interactive pixel grid and clean single-page navigation"
     ],
-    image: "/images/projects/portfolio-v1/portfolio-v1.webp",
-    demoUrl: "https://techieujjwal.github.io",
+    image: "/images/projects/portfolio-v1/portfolio4.webp",
+    demoUrl: "https://techieujjwal.github.io/portfolio/",
     githubUrl: "https://github.com/techieujjwal/portfolio",
     category: "web"
   },
@@ -101,7 +101,8 @@ export const projects: Project[] = [
       "Real-time updates using Supabase Realtime without manual refresh",
       "Scalable architecture suitable for clubs, communities, and online forums"
     ],
-    image: "/images/projects/community-dashboard/community-dashboard.webp",
+    image: "/images/projects/community-dashboard/community.webp",
+     demoUrl: "https://community-dashboard-beige.vercel.app/",
     githubUrl: "https://github.com/techieujjwal/community-dashboard",
     category: "web"
   },
@@ -126,7 +127,7 @@ export const projects: Project[] = [
       "Search functionality by roll number",
       "Extendable base for future features like GUI or PDF reports"
     ],
-    image: "/images/projects/student-result-analyzer/student-result-analyzer.webp",
+    image:"/images/student-result-analyzer/result.webp",
     githubUrl: "https://github.com/techieujjwal/Student-result-analyzer",
     category: "ai"
   }
