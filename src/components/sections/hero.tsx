@@ -67,7 +67,7 @@ export function Hero() {
               <Typewriter 
                 words={[
                   "Frontend Developer",
-                  "Cyber security enthutiast",
+                  "Cyber security enthusiast",
                   "Problem Solver",
                   "Tech Innovator"
                 ]}
