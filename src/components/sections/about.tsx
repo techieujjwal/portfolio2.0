@@ -13,6 +13,7 @@ export function About() {
   return (
     <section className="py-20 px-4">
       <div className="container mx-auto max-w-6xl">
+
         {/* Section Header */}
         <ScrollReveal delay={0.1}>
           <motion.div
@@ -20,7 +21,7 @@ export function About() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={ANIMATION_VARIANTS.fadeUp}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
               About <GradientText>Me</GradientText>
@@ -32,7 +33,7 @@ export function About() {
           </motion.div>
         </ScrollReveal>
 
-        {/* Introduction */}
+        {/* Intro + Education */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -40,66 +41,91 @@ export function About() {
           variants={ANIMATION_VARIANTS.fadeUp}
           transition={{ delay: 0.2 }}
           className="mb-16"
-        >          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="space-y-4">
-  <p className="text-lg leading-relaxed">
-    Hi! I&apos;m Ujjwal Shukla, currently pursuing my B.Tech in Computer Science Engineering
-    at Lloyd Institute of Engineering and Technology, Delhi. With a strong interest in
-    technology, community building, and full-stack development, I love creating impactful
-    solutions and digital experiences that make a real difference.
-  </p>
+        >
+          <div className="grid md:grid-cols-2 gap-12 items-start">
 
-  <p className="text-lg leading-relaxed">
-    I completed an App Designing Internship at MakeIntern, where I designed their
-    website UI, focusing on user experience, layout structuring, and visual consistency.
-    This experience strengthened my design thinking and practical implementation skills.
-    I&apos;m passionate about leveraging technology and design to solve real-world problems.
-  </p>
+            {/* LEFT — About Text */}
+            <div className="space-y-6 text-lg leading-relaxed">
+              <p>
+                Hi! I&apos;m Ujjwal Shukla, currently pursuing my B.Tech in Computer Science Engineering
+                at Lloyd Institute of Engineering and Technology, Delhi. With a strong interest in
+                technology, community building, and full-stack development, I love creating impactful
+                solutions and digital experiences that make a real difference.
+              </p>
 
-  <p className="text-lg leading-relaxed">
-    As the Co-founder of Coders Circle, a tech community with 1500+ developers and students,
-    I&apos;ve been building a strong coding culture through events, mentorship, and collaborative
-    learning, helping students grow individually and as a community.
-  </p>
-</div>
+              <p>
+                I completed an App Designing Internship at MakeIntern, where I designed their
+                website UI, focusing on user experience, layout structuring, and visual consistency.
+                This experience strengthened my design thinking and practical implementation skills.
+                I&apos;m passionate about leveraging technology and design to solve real-world problems.
+              </p>
 
-            
-            {/* Education Cards */}
-            <div className="space-y-4">
-              {educationData.map((edu, index) => (
-                <motion.div
-                  key={edu.id}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={ANIMATION_VARIANTS.fadeUp}
-                  transition={{ delay: index * 0.1 }}
-                  className="p-6 rounded-lg border bg-card hover:shadow-lg transition-shadow"
-                >                  <div className="flex items-start space-x-4">
-                    <div className="p-3 rounded-full bg-primary/10 text-primary">
-                      <GraduationCap className="h-6 w-6" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-lg">{edu.degree}</h3>
-                      <p className="text-primary font-medium">{edu.institution}</p>
-                      <div className="flex flex-wrap gap-4 mt-2 text-sm text-muted-foreground">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="h-3 w-3" />
-                          {edu.duration}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <MapPin className="h-3 w-3" />
-                          {edu.location}
-                        </span>
-                      </div>
-                      
-                    </div>
+              <p>
+                As the Co-founder of Coders Circle, a tech community with 1500+ developers and students,
+                I&apos;ve been building a strong coding culture through events, mentorship, and collaborative
+                learning, helping students grow individually and as a community.
+              </p>
+            </div>
+
+            {/* RIGHT — FLOATING PHOTO + CARD */}
+            <div className="relative flex flex-col items-center">
+
+              {/* FLOATING IMAGE */}
+              <div className="absolute -top-24">
+                <div className="relative w-75 h-75 rounded-full p-[4px] bg-gradient-to-br from-primary via-purple-500 to-blue-500 shadow-2xl">
+                  <div className="rounded-full overflow-hidden w-full h-full">
+                    
+                    <img
+                      src="/me/me.png"
+                      alt="Ujjwal Shukla"
+                      className="object-cover w-full h-full"
+                    />
+                    
                   </div>
-                </motion.div>
-              ))}
+                </div>
+
+              </div>
+              <br /><br /><br />
+
+              {/* EDUCATION CARD — moved down for spacing */}
+              <div className="pt-40 w-full space-y-4">
+                {educationData.map((edu, index) => (
+                  <motion.div
+                    key={edu.id}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={ANIMATION_VARIANTS.fadeUp}
+                    transition={{ delay: index * 0.1 }}
+                    className="p-6 rounded-lg border bg-card hover:shadow-lg transition-shadow"
+                  >
+                    <div className="flex items-start space-x-4">
+                      <div className="p-3 rounded-full bg-primary/10 text-primary">
+                        <GraduationCap className="h-6 w-6" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-lg">{edu.degree}</h3>
+                        <p className="text-primary font-medium">{edu.institution}</p>
+                        <div className="flex flex-wrap gap-4 mt-2 text-sm text-muted-foreground">
+                          <span className="flex items-center gap-1">
+                            <Calendar className="h-3 w-3" />
+                            {edu.duration}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <MapPin className="h-3 w-3" />
+                            {edu.location}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
             </div>
           </div>
         </motion.div>
+
       </div>
     </section>
   );

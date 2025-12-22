@@ -1,20 +1,27 @@
-// Experience data
-
-export interface Experience {
-  id: string;
-  company: string;
-  role: string;
-  duration: string;
-  location: string;
-  description: string;
-  achievements: string[];
-  technologies: string[];
-  logo?: string;
-  type?: "internship" | "part-time" | "full-time";
-}
-
 export const experienceData: Experience[] = [
-  
+  {
+    id: "google-student-ambassador",
+    company: "Google",
+    role: "Student Ambassador",
+    duration: "Dec 2025 - Present",
+    location: "Delhi, India · Remote",
+    description:
+      "Working as a Student Ambassador helping students explore AI tools, providing technical guidance, and building student-focused learning initiatives.",
+    achievements: [
+      "Hosted AI workshops and student learning sessions",
+      "Guided students in using Gemini and Google AI tools",
+      "Built strong networking and mentorship environment",
+      "Enhanced communication and leadership capabilities"
+    ],
+    technologies: [
+      "Public Speaking",
+      "Community Engagement",
+      "AI Tools",
+      "Leadership"
+    ],
+    type: "part-time"
+  },
+
   {
     id: "ibm-ai-intern",
     company: "IBM",
@@ -36,8 +43,7 @@ export const experienceData: Experience[] = [
       "Data Analytics"
     ],
     type: "internship"
-  }
-  ,
+  },
   {
     id: "makeintern-app-intern",
     company: "MakeIntern",
@@ -96,8 +102,8 @@ export const experienceData: Experience[] = [
     ],
     technologies: ["Communication", "Leadership", "Marketing Outreach", "Community Engagement"],
     type: "internship"
-  }
-  ,
+  },
+
   {
     id: "devsphere-event-manager",
     company: "DevSphereIndia",
@@ -114,5 +120,5 @@ export const experienceData: Experience[] = [
     ],
     technologies: ["Event Management", "Stakeholder Coordination", "Community Building", "Public Speaking"],
     type: "internship"
-  },
+  }
 ];
