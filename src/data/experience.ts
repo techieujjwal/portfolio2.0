@@ -97,25 +97,6 @@ export const experienceData: Experience[] = [
     technologies: ["Community Building", "Leadership", "Team Management", "Growth Strategy"],
     type: "full-time"
   },
-
-  {
-    id: "letsupgrade-student-ambassador",
-    company: "LetsUpgrade",
-    role: "Student Ambassador",
-    duration: "Sep 2025 - Nov 2025",
-    location: "Delhi, India · Remote",
-    description:
-      "Served as a Student Ambassador, promoting tech programs and workshops to enhance campus tech awareness and participation.",
-    achievements: [
-      "Promoted workshops, webinars, and tech events among students",
-      "Increased awareness about LetsUpgrade programs on campus",
-      "Collaborated with students and faculty to strengthen campus tech community",
-      "Improved leadership, communication, and networking skills"
-    ],
-    technologies: ["Communication", "Leadership", "Marketing Outreach", "Community Engagement"],
-    type: "internship"
-  },
-
   {
     id: "devsphere-event-manager",
     company: "DevSphereIndia",
