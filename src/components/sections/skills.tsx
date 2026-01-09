@@ -15,7 +15,7 @@ const skills: Skill[] = [
   { name: "HTML", logo: "https://skillicons.dev/icons?i=html" },
   { name: "CSS", logo: "https://skillicons.dev/icons?i=css" },
   { name: "JavaScript", logo: "https://skillicons.dev/icons?i=js" },
-  { name: "TypeScript", logo: "https://skillicons.dev/icons?i=ts" },
+
   { name: "React", logo: "https://skillicons.dev/icons?i=react" },
   { name: "Next.js", logo: "https://skillicons.dev/icons?i=nextjs&theme=light" },
   { name: "Tailwind", logo: "https://skillicons.dev/icons?i=tailwind" },
@@ -38,10 +38,10 @@ const skills: Skill[] = [
 export function SkillsShowcase() {
   // auto split evenly based on screen
   const rows = [
-    skills.slice(0, 7),
-    skills.slice(7, 12),
-    skills.slice(12, 16),
-    skills.slice(16, 19),
+    skills.slice(0, 6),
+    skills.slice(6, 11),
+    skills.slice(11, 15),
+    skills.slice(15, 18),
   ];
 
   return (
