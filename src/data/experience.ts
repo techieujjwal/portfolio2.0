@@ -15,7 +15,7 @@ export const experienceData: Experience[] = [
     id: "google-student-ambassador",
     company: "Google",
     role: "Student Ambassador",
-    duration: "Dec 2025 - Present",
+    duration: "Nov 2025 - Feb 2026",
     location: "Delhi, India · Remote",
     description:
       "Working as a Student Ambassador helping students explore AI tools, providing technical guidance, and building student-focused learning initiatives.",
@@ -23,7 +23,8 @@ export const experienceData: Experience[] = [
       "Hosted AI workshops and student learning sessions",
       "Guided students in using Gemini and Google AI tools",
       "Built strong networking and mentorship environment",
-      "Enhanced communication and leadership capabilities"
+      "Enhanced communication and leadership capabilities",
+      "Helped students gain knowledge about ai and its usage in daily life "
     ],
     technologies: [
       "Public Speaking",
