@@ -18,7 +18,7 @@ const achievements = [
     title: "Google Student Ambassador",
     description:
       "Organized workshops, tech sessions, and campus events to spread awareness about Google technologies. Empowered students through AI, Cloud, and Open Source programs — bridging learning with real-world innovation.",
-    metric: "Dec 2025 – Present",
+    metric: "Nov 2025 – Feb 2026",
   },
   {
     icon: () => (
@@ -37,7 +37,7 @@ const achievements = [
     icon: Award,
     title: "Hack India Finalist",
     description:
-      "Developed an AI-powered fashion chatbot integrating voice, text, and image. Offered personalized fashion advice using weather, location, and event context — Top 15 nationwide.",
+      "Developed an AI-powered fashion chatbot(fashionista) integrating voice, text, and image. Offered personalized fashion advice using weather, location, and event context — Top 15 nationwide.",
     metric: "Top 15",
   },
   {
@@ -45,7 +45,7 @@ const achievements = [
     title: "Coders Circle",
     description:
       "Co-founded a tech-driven community fostering mentorship and collaboration. Helped hundreds of juniors and developers accelerate their learning through open-source and events.",
-    metric: "1500+ Members",
+    metric: "1700+ Members",
   },
 ];
 
