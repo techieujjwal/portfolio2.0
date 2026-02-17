@@ -42,12 +42,13 @@ export const experienceData: Experience[] = [
     duration: "Aug 2025 - Sep 2025",
     location: "Delhi, India · Remote",
     description:
-      "Completed a 6-week Virtual Internship in Artificial Intelligence under IBM's Future Skills Program (FSP), focused on AI fundamentals and real-world applications.",
+      "Completed a 6-week Virtual Internship in Artificial Intelligence under IBM's Future Skills Program (PBEL), focused on AI fundamentals and real-world applications.",
     achievements: [
       "Gained hands-on experience in Artificial Intelligence fundamentals",
       "Worked on Machine Learning workflows and data preprocessing",
       "Applied AI concepts to solve real-world problem statements",
       "Built strong foundations in AI and analytics"
+      
     ],
     technologies: [
       "Artificial Intelligence",
@@ -73,7 +74,6 @@ export const experienceData: Experience[] = [
     ],
     technologies: [
       "UI/UX Design",
-      "Flutter",
       "App Prototyping",
       "Mobile App Design",
       "Figma"
@@ -85,15 +85,16 @@ export const experienceData: Experience[] = [
     id: "coders-circle-cofounder",
     company: "Coders Circle",
     role: "Co-Founder",
-    duration: "Aug 2025 - Present",
+    duration: "July 2025 - Present",
     location: "Greater Noida, India · Remote",
     description:
       "Co-founded and actively managing Coders Circle, a fast-growing student-led tech community focused on improving technical skills and collaboration.",
     achievements: [
-      "Scaled the community to 1400+ students within the first month",
+      "Scaled the community to 1700+ students within the first month",
       "Implemented effective community engagement strategies and learning initiatives",
       "Managed project curation and technical collaborations",
-      "Built a strong peer-learning environment for developers and tech enthusiasts"
+      "Built a strong peer-learning environment for developers and tech enthusiasts",
+      "Created multiple projects with the member of the community "
     ],
     technologies: ["Community Building", "Leadership", "Team Management", "Growth Strategy"],
     type: "full-time"
@@ -102,7 +103,7 @@ export const experienceData: Experience[] = [
     id: "devsphere-event-manager",
     company: "DevSphereIndia",
     role: "Event Manager",
-    duration: "Sep 2025 - Present",
+    duration: "Sep 2025 - Dec 2025",
     location: "Delhi, India · Hybrid",
     description:
       "Working as an Event Manager intern, planning and managing technical events, hackathons, and student-focused workshops to enhance engagement and participation.",
@@ -110,7 +111,8 @@ export const experienceData: Experience[] = [
       "Planned and managed multiple technical events, hackathons, and workshops for student communities",
       "Coordinated with speakers, mentors, and participants to ensure smooth execution",
       "Collaborated with the event team to improve outreach and participation strategies",
-      "Built hands-on experience in hybrid (online + offline) community management"
+      "Built hands-on experience in hybrid (online + offline) community management",
+      "Learned about event management on ground "
     ],
     technologies: ["Event Management", "Stakeholder Coordination", "Community Building", "Public Speaking"],
     type: "internship"
