@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { ANIMATION_VARIANTS } from "@/lib/constants";
 import { educationData } from "@/data/achievements";
 import { GraduationCap, MapPin, Calendar } from "lucide-react";
-import { 
-  ScrollReveal, 
+import {
+  ScrollReveal,
   GradientText
 } from "@/components/animations";
 
@@ -27,8 +27,7 @@ export function About() {
               About <GradientText>Me</GradientText>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Passionate about building innovative solutions at the intersection of
-              cloud computing, full-stack development, and emerging technologies.
+              A bit about who I am, what I do, and where I&apos;m headed.
             </p>
           </motion.div>
         </ScrollReveal>
@@ -48,16 +47,15 @@ export function About() {
             <div className="space-y-6 text-lg leading-relaxed">
               <p>
                 Hi! I&apos;m Ujjwal Shukla, currently pursuing my B.Tech in Computer Science Engineering
-                at Lloyd Institute of Engineering and Technology, Delhi. With a strong interest in
-                technology, community building, and full-stack development, I love creating impactful
-                solutions and digital experiences that make a real difference.
+                at Lloyd Institute of Engineering and Technology, Delhi. I like building
+                things for the web, getting involved in communities, and figuring out how
+                stuff works end-to-end.
               </p>
 
               <p>
-                I completed an App Designing Internship at MakeIntern, where I designed their
-                website UI, focusing on user experience, layout structuring, and visual consistency.
-                This experience strengthened my design thinking and practical implementation skills.
-                I&apos;m passionate about leveraging technology and design to solve real-world problems.
+                I did an App Designing Internship at MakeIntern where I worked on their
+                website UI — layouts, visual consistency, and making things feel right.
+                That&apos;s when I really started caring about how design and code come together.
               </p>
 
               <p>
@@ -74,13 +72,13 @@ export function About() {
               <div className="absolute -top-24">
                 <div className="relative w-75 h-75 rounded-full p-[4px] bg-gradient-to-br from-primary via-purple-500 to-blue-500 shadow-2xl">
                   <div className="rounded-full overflow-hidden w-full h-full">
-                    
+
                     <img
                       src="/me/me.png"
                       alt="Ujjwal Shukla"
                       className="object-cover w-full h-full"
                     />
-                    
+
                   </div>
                 </div>
 

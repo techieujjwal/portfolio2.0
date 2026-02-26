@@ -10,11 +10,9 @@ export function PageWrapper({ children }: { children: React.ReactNode }) {
   const previousPathname = useRef(pathname);
 
   useEffect(() => {
-    // Detect route change
     if (previousPathname.current !== pathname) {
       setIsReady(false);
-      
-      // Force cleanup of any existing 3D contexts
+
       const canvases = document.querySelectorAll('canvas');
       canvases.forEach(canvas => {
         const gl = canvas.getContext('webgl') || canvas.getContext('webgl2');
@@ -23,7 +21,6 @@ export function PageWrapper({ children }: { children: React.ReactNode }) {
         }
       });
 
-      // Small delay to ensure cleanup
       const timer = setTimeout(() => {
         window.scrollTo(0, 0);
         setIsReady(true);
@@ -38,8 +35,19 @@ export function PageWrapper({ children }: { children: React.ReactNode }) {
 
   if (!isReady) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="relative"
+        >
+          {/* Outer ring */}
+          <div className="h-12 w-12 rounded-full border-2 border-primary/20 animate-spin-slow" />
+          {/* Inner spinning ring */}
+          <div className="absolute inset-1 rounded-full border-2 border-transparent border-t-primary animate-spin" />
+          {/* Center glow */}
+          <div className="absolute inset-3 rounded-full bg-primary/20 animate-pulse-glow" />
+        </motion.div>
       </div>
     );
   }
@@ -48,10 +56,13 @@ export function PageWrapper({ children }: { children: React.ReactNode }) {
     <AnimatePresence mode="wait">
       <motion.div
         key={pathname}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
+        initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        exit={{ opacity: 0, y: -20, filter: "blur(10px)", scale: 0.98 }}
+        transition={{
+          duration: 0.5,
+          ease: [0.4, 0, 0.2, 1],
+        }}
         className="min-h-screen"
       >
         {children}

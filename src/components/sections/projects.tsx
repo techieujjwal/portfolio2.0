@@ -19,9 +19,9 @@ const categoryIcons: Record<string, React.ReactNode> = {
 
 export function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  
-  const filteredProjects = selectedCategory === "all" 
-    ? projects 
+
+  const filteredProjects = selectedCategory === "all"
+    ? projects
     : projects.filter(project => project.category === selectedCategory);
 
   const categories = [
@@ -47,8 +47,7 @@ export function Projects() {
             Featured <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Showcasing innovative solutions from mobile apps to blockchain
-            implementations, each project demonstrates real-world impact.
+            Here&apos;s what I&apos;ve been working on — from web apps to data tools.
           </p>
         </motion.div>
 
@@ -115,7 +114,7 @@ export function Projects() {
                       </div>
                     )}
                   </div>
-                  
+
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <h3 className="text-xl font-bold group-hover:text-primary transition-colors line-clamp-2">
@@ -126,12 +125,12 @@ export function Projects() {
                       </span>
                     </div>
                   </CardHeader>
-                  
+
                   <CardContent>
                     <p className="text-muted-foreground mb-4 text-sm leading-relaxed text-center">
                       {project.description}
                     </p>
-                    
+
                     {/* Key Features */}
                     <div className="space-y-1 mb-4">
                       {project.features.slice(0, 2).map((feature, i) => (
@@ -141,7 +140,7 @@ export function Projects() {
                         </p>
                       ))}
                     </div>
-                    
+
                     {/* Technologies */}
                     <div className="flex flex-wrap gap-1.5 mb-4">
                       {project.technologies.slice(0, 4).map((tech) => (
@@ -155,7 +154,7 @@ export function Projects() {
                         </LavenderBadge>
                       )}
                     </div>
-                    
+
                     {/* Action Buttons */}
                     <div className="flex gap-3 pt-4 border-t border-border/50">
                       {project.demoUrl && (

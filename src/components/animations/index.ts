@@ -9,3 +9,5 @@ export { TiltCard } from './tilt-card';
 export { FloatingParticles } from './floating-particles';
 export { StaggerContainer, StaggerItem } from './stagger-container';
 export { WaveText } from './wave-text';
+export { CursorGlow } from './cursor-glow';
+export { ScrollProgress } from './scroll-progress';

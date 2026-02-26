@@ -20,7 +20,7 @@ export const projects: Project[] = [
     description:
       "Web platform that helps students and developers generate personalized tech roadmaps and guidance.",
     longDescription:
-      "SyncVerse is a next-generation edtech and career navigation platform designed to help students and developers move from confusion to clarity. It allows users to describe their goals or current status and generates structured learning roadmaps, curated resources, and milestone-based plans. Built with a modern React + TypeScript stack and powered by AI for roadmap generation, SyncVerse focuses on clean UI, interactive flows, and practical guidance tailored to each learner’s journey.",
+      "SyncVerse is an edtech platform designed to help students and developers map out their goals. It allows users to input their current status and generates learning roadmaps, resources, and plans. Built with React and TypeScript and using AI models under the hood, SyncVerse focuses on a clean UI and practical guidance for each person's needs.",
     technologies: [
       "TypeScript",
       "React",
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     description:
       "A from-scratch personal portfolio website built with only HTML, CSS, and JavaScript.",
     longDescription:
-      "This is Ujjwal Shukla’s first personal portfolio website, built entirely with core web technologies and no frontend frameworks. The site showcases projects, skills, and journey as a computer science student, with a focus on smooth scrolling, theme toggling, and subtle animations. It includes a working contact form powered by Formspree, dual-theme support (light/dark), and interactive elements like a pixel grid that lights up on hover, delivering a polished but framework-free portfolio experience.",
+      "This is my first personal portfolio website, built entirely with core web technologies. It showcases my work and skills as a computer science student, with a focus on smooth scrolling, theme toggling, and clean code. It includes a working contact form powered by Formspree, dark mode support, and interactive elements like a pixel grid that lights up on hover.",
     technologies: [
       "HTML5",
       "CSS3",
@@ -65,7 +65,7 @@ export const projects: Project[] = [
       "Dual-theme (light & dark) with preference saved in local storage",
       "Fully responsive layout for mobile, tablet, and desktop",
       "Smooth scroll-based animations and section transitions",
-      "Typing effect in the hero section for dynamic introduction",
+      "Typing effect in the hero section",
       "Functional contact form integrated via Formspree",
       "Interactive pixel grid and clean single-page navigation"
     ],
@@ -80,7 +80,7 @@ export const projects: Project[] = [
     description:
       "Full-stack dashboard to monitor, analyze, and engage Coders Circle community members.",
     longDescription:
-      "A full-stack Community Dashboard & Analytics Portal built for Coders Circle, designed to track member activity, engagement, and growth. The dashboard surfaces key metrics like total members, active users, new joins, and interaction counts, along with charts for engagement trends, retention, and activity heatmaps. It also includes leaderboards for top contributors, an announcements panel for events and updates, and real-time data updates using Supabase, making it a practical tool for managing a growing student-led tech community.",
+      "A dashboard built for Coders Circle to track member activity and growth. The dashboard surfaces key metrics like total members, active users, new joins, and interaction counts, along with charts for engagement trends and activity heatmaps. It also includes leaderboards for top contributors, an announcements panel, and real-time data updates using Supabase, making it a practical tool for managing a growing student community.",
     technologies: [
       "TypeScript",
       "React",
@@ -99,10 +99,10 @@ export const projects: Project[] = [
       "Leaderboards highlighting most active and top-contributing members",
       "Announcements panel for hackathons, events, and important updates",
       "Real-time updates using Supabase Realtime without manual refresh",
-      "Scalable architecture suitable for clubs, communities, and online forums"
+      "Architecture built for clubs, communities, and online forums"
     ],
     image: "/images/projects/community-dashboard/community.webp",
-     demoUrl: "https://community-dashboard-beige.vercel.app/",
+    demoUrl: "https://community-dashboard-beige.vercel.app/",
     githubUrl: "https://github.com/techieujjwal/community-dashboard",
     category: "web"
   },
@@ -112,7 +112,7 @@ export const projects: Project[] = [
     description:
       "Beginner-friendly Python tool to manage and analyze student marks using CSV and pandas.",
     longDescription:
-      "Student Result Analyzer is a Python-based mini-project that manages and analyzes student marks stored in CSV files. It provides utilities to add and view student records, compute statistics like averages, toppers, and lowest scorers, and visualize marks using bar charts. Built using pandas and matplotlib, the project is designed as a beginner-friendly step into data analysis and Python scripting, with clear structure and potential extensions like PDF export or GUI.",
+      "Student Result Analyzer is a Python mini-project that manages and analyzes student marks using CSV files. It provides utilities to add and view student records, compute statistics like averages, top scorers, and lowest scorers, and visualize marks using bar charts. Built using pandas and matplotlib, the project is designed as a beginner-friendly tool for data analysis.",
     technologies: [
       "Python",
       "pandas",
@@ -127,7 +127,7 @@ export const projects: Project[] = [
       "Search functionality by roll number",
       "Extendable base for future features like GUI or PDF reports"
     ],
-    image:"/images/student-result-analyzer/result.webp",
+    image: "/images/student-result-analyzer/result.webp",
     githubUrl: "https://github.com/techieujjwal/Student-result-analyzer",
     category: "ai"
   }

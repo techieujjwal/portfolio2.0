@@ -10,7 +10,7 @@ export const generateMetadata = (): Metadata => {
     },
     description: SITE_CONFIG.description,
     keywords: [
-      "Ujjwal shukla",
+      "Ujjwal Shukla",
       "Portfolio",
       "Frontend Developer",
       "Tech enthutiast",
