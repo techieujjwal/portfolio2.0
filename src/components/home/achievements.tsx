@@ -12,11 +12,13 @@ function AnimatedCounter({ value }: { value: string }) {
   const inView = useInView(ref, { once: true });
   const [count, setCount] = useState(0);
 
-  // Extract number from string like "1700+", "Top 15", etc.
   const numericMatch = value.match(/(\d+)/);
   const targetNum = numericMatch ? parseInt(numericMatch[1]) : 0;
   const prefix = value.substring(0, value.indexOf(numericMatch?.[0] || ""));
-  const postfix = value.substring((value.indexOf(numericMatch?.[0] || "") + (numericMatch?.[0]?.length || 0)));
+  const postfix = value.substring(
+    value.indexOf(numericMatch?.[0] || "") +
+      (numericMatch?.[0]?.length || 0)
+  );
 
   useEffect(() => {
     if (!inView || targetNum === 0) return;
@@ -25,7 +27,6 @@ function AnimatedCounter({ value }: { value: string }) {
     const duration = 2000;
     const steps = 60;
     const increment = targetNum / steps;
-    const stepTime = duration / steps;
 
     const timer = setInterval(() => {
       current += increment;
@@ -35,7 +36,7 @@ function AnimatedCounter({ value }: { value: string }) {
       } else {
         setCount(Math.floor(current));
       }
-    }, stepTime);
+    }, duration / steps);
 
     return () => clearInterval(timer);
   }, [inView, targetNum]);
@@ -46,7 +47,9 @@ function AnimatedCounter({ value }: { value: string }) {
 
   return (
     <span ref={ref}>
-      {prefix}{inView ? count : 0}{postfix}
+      {prefix}
+      {inView ? count : 0}
+      {postfix}
     </span>
   );
 }
@@ -60,10 +63,10 @@ const achievements = [
         className="w-7 h-7 object-contain"
       />
     ),
-    title: "Google Student Ambassador",
+    title: "Google Student Ambassador (2x)",
     description:
-      "Ran workshops, tech sessions, and campus events around Google technologies. Helped students get hands-on with AI, Cloud, and Open Source through talks and study groups.",
-    metric: "Nov 2025 – Feb 2026",
+      "Selected twice by Google for campus leadership. Led workshops on AI & Cloud, mentored peers, and scaled student engagement through hands-on sessions and study groups.",
+    metric: "2x Selected",
     color: "rgba(78, 205, 196, 0.15)",
   },
   {
@@ -76,24 +79,24 @@ const achievements = [
     ),
     title: "AI Intern @ IBM",
     description:
-      "Worked on improving model accuracy for business automation tasks. Got to build and test systems that pulled insights from data and helped speed up internal processes.",
-    metric: "Aug 2025 – Oct 2025",
+      "Improved model accuracy for automation workflows and built data-driven systems to extract insights, optimizing internal business processes.",
+    metric: "Internship",
     color: "rgba(216, 178, 242, 0.15)",
   },
   {
     icon: Award,
     title: "Hack India Finalist",
     description:
-      "Built a fashion chatbot (Fashionista) that took voice, text, and image input and gave outfit suggestions based on weather, location, and event context. We placed Top 15 nationally.",
+      "Built 'Fashionista' — a multimodal AI chatbot using voice, text, and image inputs to deliver context-aware outfit recommendations.",
     metric: "Top 15",
     color: "rgba(78, 205, 196, 0.15)",
   },
   {
     icon: Users,
-    title: "Coders Circle",
+    title: "Co-Founder, Coders Circle",
     description:
-      "Co-founded a coding community from scratch. We run events, pair juniors with mentors, and help people get into open-source. It’s been cool watching it grow.",
-    metric: "1700+ Members",
+      "Built and scaled a 1700+ member developer community. Organized events, mentorship programs, and open-source onboarding initiatives.",
+    metric: "1700+",
     color: "rgba(216, 178, 242, 0.15)",
   },
 ];
@@ -104,6 +107,77 @@ export function Achievements() {
       id="achievements"
       className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-black text-white py-20"
     >
+      <ShootingStars />
+      <StarsBackground />
+
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.7),transparent_85%)] pointer-events-none" />
+
+      <div className="relative z-10 text-center mb-16 px-4">
+        <motion.h2
+          initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-5xl md:text-6xl font-extrabold gradient-text"
+        >
+          Achievements & Impact
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-gray-400 text-lg max-w-2xl mx-auto mt-4"
+        >
+          A snapshot of my journey — building, leading, and scaling impact.
+        </motion.p>
+      </div>
+
+      <div className="relative z-10 container mx-auto px-6 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {achievements.map((achievement, index) => {
+          const Icon = achievement.icon;
+          return (
+            <motion.div
+              key={achievement.title}
+              initial={{ opacity: 0, rotateY: -30, scale: 0.9 }}
+              whileInView={{ opacity: 1, rotateY: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="flex"
+              style={{ perspective: 1000 }}
+            >
+              <Card className="group bg-neutral-900/70 border border-white/[0.08] rounded-2xl p-6 flex flex-col justify-between w-full min-h-[340px] hover:border-white/20 transition-all duration-500">
+                <CardContent className="text-center flex flex-col items-center justify-between h-full">
+                  <motion.div
+                    className="w-16 h-16 rounded-full flex items-center justify-center mb-5 bg-white/5"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <Icon />
+                  </motion.div>
+
+                  <div>
+                    <h3 className="font-bold text-2xl mb-2">
+                      <AnimatedCounter value={achievement.metric} />
+                    </h3>
+
+                    <p className="font-semibold text-lg mb-2">
+                      {achievement.title}
+                    </p>
+
+                    <p className="text-sm text-gray-400 leading-relaxed">
+                      {achievement.description}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}    >
       <ShootingStars />
       <StarsBackground />
 
