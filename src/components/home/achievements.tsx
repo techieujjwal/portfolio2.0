@@ -5,10 +5,6 @@ import { useRef, useEffect, useState } from "react";
 import { Award, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
-// Optional (enable later safely)
-// import { ShootingStars } from "@/components/ui/shooting-stars";
-// import { StarsBackground } from "@/components/ui/stars-background";
-
 function AnimatedCounter({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
@@ -70,7 +66,7 @@ const achievements = [
     ),
     title: "AI Intern @ IBM",
     description:
-      "Worked on improving ML model accuracy and building data-driven automation systems.",
+      "Worked on improving ML model accuracy and building automation systems.",
     metric: "Intern",
   },
   {
@@ -95,10 +91,6 @@ export function Achievements() {
       id="achievements"
       className="min-h-screen flex flex-col justify-center items-center bg-black text-white py-20"
     >
-      {/* Enable later if needed */}
-      {/* <ShootingStars /> */}
-      {/* <StarsBackground /> */}
-
       <div className="text-center mb-16 px-4">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
@@ -145,6 +137,16 @@ export function Achievements() {
 
                   <p className="text-sm text-gray-400">
                     {achievement.description}
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}                    {achievement.description}
                   </p>
                 </CardContent>
               </Card>
