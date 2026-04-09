@@ -4,8 +4,9 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Award, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { ShootingStars } from "@/components/ui/shooting-stars";
-import { StarsBackground } from "@/components/ui/stars-background";
+// TEMP: comment if these cause error
+// import { ShootingStars } from "@/components/ui/shooting-stars";
+// import { StarsBackground } from "@/components/ui/stars-background";
 
 function AnimatedCounter({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -14,11 +15,6 @@ function AnimatedCounter({ value }: { value: string }) {
 
   const numericMatch = value.match(/(\d+)/);
   const targetNum = numericMatch ? parseInt(numericMatch[1]) : 0;
-  const prefix = value.substring(0, value.indexOf(numericMatch?.[0] || ""));
-  const postfix = value.substring(
-    value.indexOf(numericMatch?.[0] || "") +
-      (numericMatch?.[0]?.length || 0)
-  );
 
   useEffect(() => {
     if (!inView || targetNum === 0) return;
@@ -41,15 +37,10 @@ function AnimatedCounter({ value }: { value: string }) {
     return () => clearInterval(timer);
   }, [inView, targetNum]);
 
-  if (targetNum === 0) {
-    return <span ref={ref}>{value}</span>;
-  }
-
   return (
     <span ref={ref}>
-      {prefix}
       {inView ? count : 0}
-      {postfix}
+      {value.replace(/\d+/, "")}
     </span>
   );
 }
@@ -65,45 +56,104 @@ const achievements = [
     ),
     title: "Google Student Ambassador (2x)",
     description:
-      "Selected twice by Google for campus leadership. Led workshops on AI & Cloud, mentored peers, and scaled student engagement through hands-on sessions and study groups.",
-    metric: "2x Selected",
-    color: "rgba(78, 205, 196, 0.15)",
+      "Selected twice by Google. Led AI & Cloud workshops, mentored students, and scaled campus engagement.",
+    metric: "2x",
   },
   {
     icon: () => (
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg"
         alt="IBM Logo"
-        className="w-6 h-6 object-contain brightness-125"
+        className="w-6 h-6 object-contain"
       />
     ),
     title: "AI Intern @ IBM",
     description:
-      "Improved model accuracy for automation workflows and built data-driven systems to extract insights, optimizing internal business processes.",
-    metric: "Internship",
-    color: "rgba(216, 178, 242, 0.15)",
+      "Worked on improving ML model accuracy and building data-driven automation systems.",
+    metric: "Intern",
   },
   {
     icon: Award,
     title: "Hack India Finalist",
     description:
-      "Built 'Fashionista' — a multimodal AI chatbot using voice, text, and image inputs to deliver context-aware outfit recommendations.",
+      "Built a multimodal AI chatbot for smart outfit recommendations.",
     metric: "Top 15",
-    color: "rgba(78, 205, 196, 0.15)",
   },
   {
     icon: Users,
     title: "Co-Founder, Coders Circle",
     description:
-      "Built and scaled a 1700+ member developer community. Organized events, mentorship programs, and open-source onboarding initiatives.",
+      "Built and scaled a 1700+ developer community with events and mentorship.",
     metric: "1700+",
-    color: "rgba(216, 178, 242, 0.15)",
   },
 ];
 
 export function Achievements() {
   return (
     <section
+      id="achievements"
+      className="min-h-screen flex flex-col justify-center items-center bg-black text-white py-20"
+    >
+      {/* Optional effects (enable later) */}
+      {/* <ShootingStars /> */}
+      {/* <StarsBackground /> */}
+
+      <div className="text-center mb-16 px-4">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-5xl md:text-6xl font-extrabold"
+        >
+          Achievements & Impact
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-gray-400 text-lg max-w-2xl mx-auto mt-4"
+        >
+          Building, leading, and scaling impact through tech.
+        </motion.p>
+      </div>
+
+      <div className="container mx-auto px-6 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {achievements.map((achievement, index) => {
+          const Icon = achievement.icon;
+
+          return (
+            <motion.div
+              key={achievement.title}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="bg-neutral-900 border border-white/10 rounded-2xl p-6 text-center hover:scale-[1.03] transition">
+                <CardContent>
+                  <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-white/10 rounded-full">
+                    <Icon />
+                  </div>
+
+                  <h3 className="text-2xl font-bold mb-2">
+                    <AnimatedCounter value={achievement.metric} />
+                  </h3>
+
+                  <p className="font-semibold mb-2">
+                    {achievement.title}
+                  </p>
+
+                  <p className="text-sm text-gray-400">
+                    {achievement.description}
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}    <section
       id="achievements"
       className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-black text-white py-20"
     >
