@@ -4,7 +4,8 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Award, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-// TEMP: comment if these cause error
+
+// Optional (enable later safely)
 // import { ShootingStars } from "@/components/ui/shooting-stars";
 // import { StarsBackground } from "@/components/ui/stars-background";
 
@@ -94,7 +95,7 @@ export function Achievements() {
       id="achievements"
       className="min-h-screen flex flex-col justify-center items-center bg-black text-white py-20"
     >
-      {/* Optional effects (enable later) */}
+      {/* Enable later if needed */}
       {/* <ShootingStars /> */}
       {/* <StarsBackground /> */}
 
@@ -145,6 +146,15 @@ export function Achievements() {
                   <p className="text-sm text-gray-400">
                     {achievement.description}
                   </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}                  </p>
                 </CardContent>
               </Card>
             </motion.div>
