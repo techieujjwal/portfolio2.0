@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ANIMATION_VARIANTS } from "@/lib/constants";
 import { educationData } from "@/data/achievements";
 import { GraduationCap, MapPin, Calendar } from "lucide-react";
+import Image from "next/image";
 import {
   ScrollReveal,
   GradientText
@@ -13,8 +14,6 @@ export function About() {
   return (
     <section className="py-20 px-4">
       <div className="container mx-auto max-w-6xl">
-
-        {/* Section Header */}
         <ScrollReveal delay={0.1}>
           <motion.div
             initial="hidden"
@@ -32,7 +31,6 @@ export function About() {
           </motion.div>
         </ScrollReveal>
 
-        {/* Intro + Education */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -42,8 +40,6 @@ export function About() {
           className="mb-16"
         >
           <div className="grid md:grid-cols-2 gap-12 items-start">
-
-            {/* LEFT — About Text */}
             <div className="space-y-6 text-lg leading-relaxed">
               <p>
                 Hi! I&apos;m Ujjwal Shukla, currently pursuing my B.Tech in Computer Science Engineering
@@ -65,27 +61,23 @@ export function About() {
               </p>
             </div>
 
-            {/* RIGHT — FLOATING PHOTO + CARD */}
             <div className="relative flex flex-col items-center">
-
-              {/* FLOATING IMAGE */}
               <div className="absolute -top-24">
-                <div className="relative w-75 h-75 rounded-full p-[4px] bg-gradient-to-br from-primary via-purple-500 to-blue-500 shadow-2xl">
-                  <div className="rounded-full overflow-hidden w-full h-full">
-
-                    <img
+                <div className="relative w-75 h-75 rounded-full p-[4px] bg-gradient-to-br from-indigo-500 via-violet-500 to-slate-400 shadow-2xl">
+                  <div className="rounded-full overflow-hidden w-full h-full relative">
+                    <Image
                       src="/me/me.png"
                       alt="Ujjwal Shukla"
-                      className="object-cover w-full h-full"
+                      fill
+                      sizes="300px"
+                      className="object-cover"
+                      priority
                     />
-
                   </div>
                 </div>
-
               </div>
               <br /><br /><br />
 
-              {/* EDUCATION CARD — moved down for spacing */}
               <div className="pt-40 w-full space-y-4">
                 {educationData.map((edu, index) => (
                   <motion.div
@@ -119,11 +111,9 @@ export function About() {
                   </motion.div>
                 ))}
               </div>
-
             </div>
           </div>
         </motion.div>
-
       </div>
     </section>
   );

@@ -16,29 +16,23 @@ import { ChevronDown } from "lucide-react";
 function OrbitingShapes() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Outer orbit ring */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px]">
         <div className="w-full h-full rounded-full border border-white/[0.03] animate-spin-slow" />
-        {/* Orbiting dot 1 */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <div className="w-2 h-2 rounded-full bg-teal/60 shadow-[0_0_15px_rgba(78,205,196,0.5)]" />
         </div>
-        {/* Orbiting dot 2 */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
           <div className="w-1.5 h-1.5 rounded-full bg-lavender/60 shadow-[0_0_15px_rgba(216,178,242,0.5)]" />
         </div>
       </div>
 
-      {/* Inner orbit ring */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[550px] md:h-[550px]">
         <div className="w-full h-full rounded-full border border-white/[0.02] animate-spin-reverse" />
-        {/* Orbiting dot 3 */}
         <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2">
           <div className="w-2.5 h-2.5 rounded-full bg-teal/40 shadow-[0_0_20px_rgba(78,205,196,0.4)]" />
         </div>
       </div>
 
-      {/* Floating geometric shapes */}
       <motion.div
         className="absolute top-[20%] right-[15%] w-16 h-16 border border-teal/10 rotate-45"
         animate={{
@@ -106,15 +100,7 @@ function AnimatedName() {
       {chars.map((char, i) => (
         <motion.span
           key={i}
-          className="inline-block"
-          style={{
-            background: "linear-gradient(135deg, var(--teal) 0%, var(--lavender) 50%, var(--teal-light) 100%)",
-            backgroundSize: "200% 200%",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-            animation: "gradient-shift 6s ease infinite",
-          }}
+          className="inline-block text-foreground"
           variants={{
             hidden: {
               opacity: 0,
@@ -188,16 +174,10 @@ export function Hero() {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* 3D Background */}
       <LazyStarsBackground />
-
-      {/* Floating Particles */}
       <FloatingParticles />
-
-      {/* Orbiting Shapes */}
       <OrbitingShapes />
 
-      {/* Aurora gradient overlay (mouse reactive) */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -207,17 +187,14 @@ export function Hero() {
         }}
       />
 
-      {/* Radial vignette */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.4)_100%)] pointer-events-none" />
 
-      {/* Content */}
       <div className="container mx-auto px-4 py-20 relative z-10">
         <motion.div
           initial="hidden"
           animate="visible"
           className="text-center max-w-4xl mx-auto"
         >
-          {/* Greeting */}
           <motion.p
             variants={ANIMATION_VARIANTS.fadeDown}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -226,10 +203,8 @@ export function Hero() {
             Hey there, I&apos;m
           </motion.p>
 
-          {/* Animated Name */}
           <AnimatedName />
 
-          {/* Tagline */}
           <motion.div
             variants={ANIMATION_VARIANTS.fadeUp}
             transition={{ duration: 0.6, delay: 0.8 }}
@@ -248,7 +223,6 @@ export function Hero() {
             </span>
           </motion.div>
 
-          {/* CTA Buttons */}
           <motion.div
             variants={ANIMATION_VARIANTS.fadeUp}
             transition={{ duration: 0.6, delay: 1 }}
@@ -281,7 +255,6 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
       <ScrollIndicator />
     </section>
   );

@@ -1,5 +1,3 @@
-// Projects data from Ujjwal's portfolio
-
 export interface Project {
   id: string;
   title: string;

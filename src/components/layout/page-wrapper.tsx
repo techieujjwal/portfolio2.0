@@ -3,11 +3,31 @@
 import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
+import Lenis from "lenis";
 
 export function PageWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [isReady, setIsReady] = useState(false);
   const previousPathname = useRef(pathname);
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   useEffect(() => {
     if (previousPathname.current !== pathname) {
@@ -41,11 +61,8 @@ export function PageWrapper({ children }: { children: React.ReactNode }) {
           animate={{ opacity: 1, scale: 1 }}
           className="relative"
         >
-          {/* Outer ring */}
           <div className="h-12 w-12 rounded-full border-2 border-primary/20 animate-spin-slow" />
-          {/* Inner spinning ring */}
           <div className="absolute inset-1 rounded-full border-2 border-transparent border-t-primary animate-spin" />
-          {/* Center glow */}
           <div className="absolute inset-3 rounded-full bg-primary/20 animate-pulse-glow" />
         </motion.div>
       </div>

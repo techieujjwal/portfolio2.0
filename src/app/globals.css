@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -9,9 +8,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-playfair);
+  --font-sans: 'Outfit', sans-serif;
+  --font-mono: 'Outfit', sans-serif;
+  --font-display: 'Outfit', sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -46,7 +45,6 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   
-  /* Custom color palette variables */
   --color-lavender: var(--lavender);
   --color-lavender-light: var(--lavender-light);
   --color-lavender-dark: var(--lavender-dark);
@@ -58,16 +56,14 @@
 :root {
   --radius: 0.625rem;
   
-  /* Custom Color Palette */
   --white: oklch(1 0 0);
-  --lavender: oklch(0.84 0.05 290);
-  --lavender-light: oklch(0.92 0.03 290);
-  --lavender-dark: oklch(0.72 0.08 290);
-  --teal: oklch(0.71 0.11 180);
-  --teal-light: oklch(0.82 0.08 180);
-  --teal-dark: oklch(0.58 0.14 180);
+  --lavender: oklch(0.65 0.2 295);
+  --lavender-light: oklch(0.78 0.12 295);
+  --lavender-dark: oklch(0.5 0.25 295);
+  --teal: oklch(0.6 0.21 270);
+  --teal-light: oklch(0.75 0.12 270);
+  --teal-dark: oklch(0.45 0.23 270);
   
-  /* Light Mode Theme */
   --background: var(--white);
   --foreground: oklch(0.2 0.02 260);
   --card: var(--white);
@@ -139,10 +135,6 @@
   --sidebar-ring: var(--teal);
 }
 
-/* ═══════════════════════════════════════════
-   ADVANCED ANIMATIONS & KEYFRAMES
-   ═══════════════════════════════════════════ */
-
 @keyframes aurora {
   0%, 100% {
     background-position: 0% 50%;
@@ -160,10 +152,10 @@
 
 @keyframes glow-pulse {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(78, 205, 196, 0.15), 0 0 60px rgba(78, 205, 196, 0.05);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.15), 0 0 60px rgba(99, 102, 241, 0.05);
   }
   50% {
-    box-shadow: 0 0 40px rgba(78, 205, 196, 0.3), 0 0 80px rgba(78, 205, 196, 0.1);
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.3), 0 0 80px rgba(99, 102, 241, 0.1);
   }
 }
 
@@ -259,25 +251,19 @@
   100% { opacity: 0; transform: translateY(8px); }
 }
 
-/* ═══════════════════════════════════════════
-   UTILITY CLASSES
-   ═══════════════════════════════════════════ */
-
-/* Aurora gradient background */
 .aurora-bg {
   background: linear-gradient(
     -45deg,
-    rgba(78, 205, 196, 0.15),
-    rgba(216, 178, 242, 0.15),
-    rgba(78, 205, 196, 0.08),
-    rgba(216, 178, 242, 0.08),
-    rgba(78, 205, 196, 0.15)
+    rgba(99, 102, 241, 0.15),
+    rgba(139, 92, 246, 0.15),
+    rgba(99, 102, 241, 0.08),
+    rgba(139, 92, 246, 0.08),
+    rgba(99, 102, 241, 0.15)
   );
   background-size: 400% 400%;
   animation: aurora 15s ease infinite;
 }
 
-/* Glass card effect */
 .glass-card {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(20px);
@@ -290,7 +276,6 @@
   border-color: rgba(255, 255, 255, 0.15);
 }
 
-/* Glow border */
 .glow-border {
   position: relative;
 }
@@ -312,38 +297,22 @@
   opacity: 0.6;
 }
 
-/* Shimmer text */
 .shimmer-text {
-  background: linear-gradient(
-    90deg,
-    var(--foreground) 0%,
-    var(--teal) 25%,
-    var(--lavender) 50%,
-    var(--teal) 75%,
-    var(--foreground) 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 4s linear infinite;
+  color: #ffffff !important;
+  background: none !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
-/* Gradient text (enhanced) */
 .gradient-text {
-  background: linear-gradient(135deg, var(--teal) 0%, var(--lavender) 50%, var(--teal-light) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  background-size: 200% 200%;
-  animation: gradient-shift 6s ease infinite;
+  color: #ffffff !important;
+  background: none !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 .gradient-bg {
   background: linear-gradient(135deg, var(--teal) 0%, var(--lavender) 100%);
 }
 
-/* Float animation */
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
@@ -368,7 +337,6 @@
   animation: bounce-in 0.6s ease-out both;
 }
 
-/* Hover teal effect (enhanced) */
 .hover-teal {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -376,19 +344,17 @@
 .hover-teal:hover {
   color: var(--teal);
   transform: translateY(-2px);
-  text-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
 }
 
-/* Dark mode enhancements */
 .dark body {
   background-color: var(--background);
   background-image: 
-    radial-gradient(ellipse at 20% 50%, oklch(0.84 0.05 290 / 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, oklch(0.71 0.11 180 / 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, oklch(0.84 0.05 290 / 0.04) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 50%, oklch(0.65 0.2 295 / 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, oklch(0.6 0.21 270 / 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, oklch(0.65 0.2 295 / 0.04) 0%, transparent 50%);
 }
 
-/* Noise texture overlay */
 .noise-overlay::after {
   content: '';
   position: fixed;
@@ -399,7 +365,6 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
 }
 
-/* Scroll progress bar */
 .scroll-progress {
   position: fixed;
   top: 0;
@@ -425,7 +390,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar (enhanced) */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -444,15 +408,18 @@ html {
   background: linear-gradient(180deg, var(--teal-light), var(--lavender-light));
 }
 
-/* Selection styling */
 ::selection {
-  background: rgba(78, 205, 196, 0.3);
+  background: rgba(99, 102, 241, 0.3);
   color: white;
 }
 
-/* Smooth transitions for dark mode */
 .dark [data-scroll].in-view {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.dot-grid {
+  background-size: 32px 32px;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
 }

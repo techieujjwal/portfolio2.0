@@ -35,7 +35,6 @@ export function Projects() {
   return (
     <section className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto max-w-6xl">
-        {/* Section Header */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -51,7 +50,6 @@ export function Projects() {
           </p>
         </motion.div>
 
-        {/* Category Filter */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -72,7 +70,6 @@ export function Projects() {
           ))}
         </motion.div>
 
-        {/* Projects Grid */}
         <AnimatePresence mode="wait">
           <motion.div
             key={selectedCategory}
@@ -92,7 +89,6 @@ export function Projects() {
                 transition={{ delay: index * 0.1 }}
               >
                 <Card className="group h-full overflow-hidden hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/50">
-                  {/* Project Image */}
                   <div className="relative h-56 overflow-hidden bg-gradient-to-br from-primary/10 via-accent/10 to-primary/10">
                     {project.image ? (
                       <Image
@@ -131,7 +127,6 @@ export function Projects() {
                       {project.description}
                     </p>
 
-                    {/* Key Features */}
                     <div className="space-y-1 mb-4">
                       {project.features.slice(0, 2).map((feature, i) => (
                         <p key={i} className="text-xs text-muted-foreground/80 flex items-start">
@@ -141,7 +136,6 @@ export function Projects() {
                       ))}
                     </div>
 
-                    {/* Technologies */}
                     <div className="flex flex-wrap gap-1.5 mb-4">
                       {project.technologies.slice(0, 4).map((tech) => (
                         <LavenderBadge key={tech}>
@@ -155,7 +149,6 @@ export function Projects() {
                       )}
                     </div>
 
-                    {/* Action Buttons */}
                     <div className="flex gap-3 pt-4 border-t border-border/50">
                       {project.demoUrl && (
                         <a

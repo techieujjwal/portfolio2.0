@@ -18,57 +18,55 @@ export function FloatingParticles() {
   }, [mouseX, mouseY]);
 
   const particles = useMemo(() => {
-    return Array.from({ length: 50 }).map((_, i) => {
-      const shapes = ["circle", "diamond", "circle", "circle", "dot"] as const;
-      return {
-        id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: Math.random() * 6 + 1,
-        duration: Math.random() * 25 + 15,
-        delay: Math.random() * 8,
-        color: Math.random() > 0.5 ? "#4ECDC4" : "#D8B2F2",
-        opacity: Math.random() * 0.4 + 0.1,
-        shape: shapes[Math.floor(Math.random() * shapes.length)],
-        driftX: (Math.random() - 0.5) * 60,
-        driftY: Math.random() * -120 - 30,
-      };
-    });
+    const shapes = ["circle", "diamond", "circle", "circle", "dot"] as const;
+    return Array.from({ length: 50 }).map((_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 6 + 1,
+      duration: Math.random() * 25 + 15,
+      delay: Math.random() * 8,
+      color: Math.random() > 0.5 ? "#6366f1" : "#8b5cf6",
+      opacity: Math.random() * 0.4 + 0.1,
+      shape: shapes[Math.floor(Math.random() * shapes.length)],
+      driftX: (Math.random() - 0.5) * 60,
+      driftY: Math.random() * -120 - 30,
+    }));
   }, []);
 
   return (
     <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none">
-      {particles.map((particle) => (
+      {particles.map((p) => (
         <motion.div
-          key={particle.id}
+          key={p.id}
           className="absolute"
           style={{
-            left: `${particle.x}%`,
-            top: `${particle.y}%`,
-            width: particle.shape === "dot" ? particle.size * 0.5 : particle.size,
-            height: particle.shape === "dot" ? particle.size * 0.5 : particle.size,
+            left: `${p.x}%`,
+            top: `${p.y}%`,
+            width: p.shape === "dot" ? p.size * 0.5 : p.size,
+            height: p.shape === "dot" ? p.size * 0.5 : p.size,
           }}
           animate={{
-            y: [0, particle.driftY],
-            x: [0, particle.driftX],
-            opacity: [0, particle.opacity, particle.opacity, 0],
+            y: [0, p.driftY],
+            x: [0, p.driftX],
+            opacity: [0, p.opacity, p.opacity, 0],
             scale: [0.5, 1, 1, 0.3],
-            rotate: particle.shape === "diamond" ? [0, 180, 360] : [0, 0, 0],
+            rotate: p.shape === "diamond" ? [0, 180, 360] : [0, 0, 0],
           }}
           transition={{
-            duration: particle.duration,
-            delay: particle.delay,
+            duration: p.duration,
+            delay: p.delay,
             repeat: Infinity,
             ease: "easeInOut",
           }}
         >
-          {particle.shape === "diamond" ? (
+          {p.shape === "diamond" ? (
             <div
               className="rotate-45"
               style={{
                 width: "100%",
                 height: "100%",
-                background: particle.color,
+                background: p.color,
                 opacity: 0.6,
                 filter: "blur(0.5px)",
               }}
@@ -79,9 +77,9 @@ export function FloatingParticles() {
                 width: "100%",
                 height: "100%",
                 borderRadius: "50%",
-                background: `radial-gradient(circle, ${particle.color} 0%, transparent 70%)`,
-                filter: particle.shape === "dot" ? "none" : "blur(1px)",
-                boxShadow: `0 0 ${particle.size * 2}px ${particle.color}30`,
+                background: `radial-gradient(circle, ${p.color} 0%, transparent 70%)`,
+                filter: p.shape === "dot" ? "none" : "blur(1px)",
+                boxShadow: `0 0 ${p.size * 2}px ${p.color}30`,
               }}
             />
           )}

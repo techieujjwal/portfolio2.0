@@ -25,7 +25,6 @@ export function Footer() {
 
   return (
     <>
-      {/* Gradient wave separator */}
       <div className="relative h-24 overflow-hidden">
         <div className="absolute bottom-0 left-0 right-0 h-24">
           <svg
@@ -59,7 +58,6 @@ export function Footer() {
       </div>
 
       <footer className="relative mt-0 border-t border-white/5 bg-background overflow-hidden">
-        {/* Subtle background gradient */}
         <div className="absolute inset-0 pointer-events-none">
           <div
             className="absolute w-[600px] h-[600px] rounded-full opacity-[0.03]"
@@ -81,7 +79,6 @@ export function Footer() {
 
         <div className="relative container mx-auto px-4 py-12">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {/* About Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -97,7 +94,6 @@ export function Footer() {
               </p>
             </motion.div>
 
-            {/* Quick Links */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -119,7 +115,6 @@ export function Footer() {
               </nav>
             </motion.div>
 
-            {/* Contact & Social */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -145,7 +140,6 @@ export function Footer() {
                 </a>
               </div>
 
-              {/* Social icons with animated hover */}
               <div className="flex space-x-3 pt-2">
                 {socialLinks.map((social) => {
                   const Icon = social.icon;
@@ -172,7 +166,6 @@ export function Footer() {
             </motion.div>
           </div>
 
-          {/* Copyright */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}

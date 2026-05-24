@@ -1,24 +1,31 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export function CursorGlow() {
-  const [position, setPosition] = useState({ x: -100, y: -100 });
+  const mouseX = useMotionValue(-100);
+  const mouseY = useMotionValue(-100);
+
+  const springConfig = { damping: 25, stiffness: 250, mass: 0.5 };
+  const trailX = useSpring(mouseX, springConfig);
+  const trailY = useSpring(mouseY, springConfig);
+
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    setPosition({ x: e.clientX, y: e.clientY });
-    if (!isVisible) setIsVisible(true);
-  }, [isVisible]);
-
   useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+      if (!isVisible) setIsVisible(true);
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
 
     const handleHoverIn = () => setIsHovering(true);
     const handleHoverOut = () => setIsHovering(false);
 
-    // Detect hoverable elements
     const observer = new MutationObserver(() => {
       const interactiveElements = document.querySelectorAll(
         'a, button, [role="button"], input, textarea, select, [data-cursor-hover]'
@@ -33,7 +40,6 @@ export function CursorGlow() {
 
     observer.observe(document.body, { childList: true, subtree: true });
 
-    // Initial scan
     const interactiveElements = document.querySelectorAll(
       'a, button, [role="button"], input, textarea, select, [data-cursor-hover]'
     );
@@ -46,45 +52,38 @@ export function CursorGlow() {
       window.removeEventListener("mousemove", handleMouseMove);
       observer.disconnect();
     };
-  }, [handleMouseMove]);
+  }, [mouseX, mouseY, isVisible]);
 
-  // Hide on mobile/touch
   if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) {
     return null;
   }
 
   return (
     <>
-      {/* Main glow orb */}
-      <div
-        className="fixed pointer-events-none z-[9998] hidden md:block"
+      <motion.div
+        className="fixed pointer-events-none z-[9998] hidden md:block rounded-full border border-white/30"
         style={{
-          left: position.x,
-          top: position.y,
-          transform: "translate(-50%, -50%)",
-          width: isHovering ? 60 : 400,
-          height: isHovering ? 60 : 400,
-          borderRadius: "50%",
-          background: isHovering
-            ? "radial-gradient(circle, rgba(78, 205, 196, 0.25) 0%, transparent 70%)"
-            : "radial-gradient(circle, rgba(78, 205, 196, 0.07) 0%, rgba(216, 178, 242, 0.04) 40%, transparent 70%)",
-          transition: "width 0.4s cubic-bezier(0.4, 0, 0.2, 1), height 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s ease",
+          left: trailX,
+          top: trailY,
+          translateX: "-50%",
+          translateY: "-50%",
+          width: isHovering ? 48 : 24,
+          height: isHovering ? 48 : 24,
+          background: isHovering ? "rgba(255, 255, 255, 0.05)" : "transparent",
+          transition: "width 0.2s, height 0.2s, background 0.2s",
           opacity: isVisible ? 1 : 0,
         }}
       />
-      {/* Small dot cursor */}
-      <div
-        className="fixed pointer-events-none z-[9998] hidden md:block"
+      <motion.div
+        className="fixed pointer-events-none z-[9998] hidden md:block rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.5)]"
         style={{
-          left: position.x,
-          top: position.y,
-          transform: "translate(-50%, -50%)",
-          width: isHovering ? 12 : 6,
-          height: isHovering ? 12 : 6,
-          borderRadius: "50%",
-          background: "rgba(78, 205, 196, 0.8)",
-          boxShadow: "0 0 15px rgba(78, 205, 196, 0.5), 0 0 30px rgba(78, 205, 196, 0.2)",
-          transition: "width 0.2s ease, height 0.2s ease",
+          left: mouseX,
+          top: mouseY,
+          translateX: "-50%",
+          translateY: "-50%",
+          width: isHovering ? 8 : 4,
+          height: isHovering ? 8 : 4,
+          transition: "width 0.2s, height 0.2s",
           opacity: isVisible ? 1 : 0,
         }}
       />

@@ -1,8 +1,6 @@
-// Skills data categorized from ujjwalla's resume
-
 export interface Skill {
   name: string;
-  level: number; // 1-100
+  level: number;
   icon?: string;
 }
 
@@ -28,7 +26,8 @@ export const skillsData: SkillCategory[] = [
   {
     title: "Frontend Development",
     icon: "🎨",
-    skills: [      { name: "React.js", level: 90 },
+    skills: [
+      { name: "React.js", level: 90 },
       { name: "Next.js", level: 85 },
       { name: "Tailwind CSS", level: 88 },
       { name: "Three.js", level: 75 },
@@ -41,9 +40,7 @@ export const skillsData: SkillCategory[] = [
     skills: [
       { name: "SupaBase", level: 74 },
       { name: "MYSQL", level: 85 },
-     
       { name: "Firebase", level: 90 }
     ]
   },
-  
 ];

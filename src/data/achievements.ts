@@ -1,12 +1,9 @@
-// Leadership and achievements data
-
 export interface Achievement {
   id: string;
   title: string;
   organization: string;
   description: string;
   impact: string[];
-  
 }
 
 export const achievementsData: Achievement[] = [
@@ -21,18 +18,15 @@ export const achievementsData: Achievement[] = [
       "Encouraged open-source contributions and project-based learning",
       "Built leadership and community engagement initiatives"
     ],
-    
   }
 ];
 
-// Education data
 export interface Education {
   id: string;
   institution: string;
   degree: string;
   duration: string;
   location: string;
-  
 }
 
 export const educationData: Education[] = [
@@ -42,6 +36,5 @@ export const educationData: Education[] = [
     degree: "B.Tech in Computer Science Engineering",
     duration: "2024 - 2028",
     location: "Delhi, India",
-   
   }
 ];

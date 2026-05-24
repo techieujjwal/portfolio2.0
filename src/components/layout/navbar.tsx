@@ -7,19 +7,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NAV_ITEMS } from "@/lib/constants";
-
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 export function Navbar() {
   const pathname = usePathname();
-
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
   const [open, setOpen] = useState(false);
 
   useEffect(() => setMounted(true), []);
@@ -60,7 +57,6 @@ export function Navbar() {
               : "bg-black/40 backdrop-blur-xl border border-white/5 shadow-lg"
           )}
         >
-          {/* Animated gradient border overlay */}
           <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
             <div
               className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-700"
@@ -71,8 +67,6 @@ export function Navbar() {
           </div>
 
           <div className="relative flex items-center justify-between">
-
-            {/* Logo */}
             <Link
               href="/"
               onClick={() => setOpen(false)}
@@ -83,7 +77,6 @@ export function Navbar() {
               </span>
             </Link>
 
-            {/* Desktop Navigation */}
             <div className="hidden md:flex gap-1">
               {NAV_ITEMS.map((item) => {
                 const active = pathname === item.href;
@@ -122,7 +115,6 @@ export function Navbar() {
               })}
             </div>
 
-            {/* Resume button */}
             <div className="hidden md:flex items-center">
               <a
                 href="/resume/resume.pdf"
@@ -142,7 +134,6 @@ export function Navbar() {
               </a>
             </div>
 
-            {/* Mobile Menu */}
             <div className="flex md:hidden">
               <Sheet open={open} onOpenChange={setOpen}>
                 <SheetTrigger asChild>
@@ -176,7 +167,6 @@ export function Navbar() {
                       </Link>
                     </div>
 
-                    {/* Nav links */}
                     <div className="flex-1 px-6 py-6 flex flex-col gap-2">
                       {NAV_ITEMS.map((item, index) => (
                         <motion.div
@@ -202,7 +192,6 @@ export function Navbar() {
                       ))}
                     </div>
 
-                    {/* Resume */}
                     <div className="px-6 pb-6">
                       <a
                         href="/resume/resume.pdf"
@@ -217,7 +206,6 @@ export function Navbar() {
                         </Button>
                       </a>
                     </div>
-
                   </div>
                 </SheetContent>
               </Sheet>

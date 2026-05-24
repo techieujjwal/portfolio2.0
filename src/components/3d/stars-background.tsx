@@ -27,7 +27,7 @@ function Stars({ count = 5000, radius = 1.5, ...props }: StarsProps) {
       <Points ref={ref} positions={sphere} stride={3} frustumCulled={false} {...props}>
         <PointMaterial
           transparent
-          color="#C8A2D8"  // Lavender color
+          color="#8b5cf6"
           size={0.002}
           sizeAttenuation={true}
           depthWrite={false}
@@ -36,6 +36,7 @@ function Stars({ count = 5000, radius = 1.5, ...props }: StarsProps) {
     </group>
   );
 }
+
 export function StarsBackground() {
   return (
     <div className="absolute inset-0 h-full w-full">

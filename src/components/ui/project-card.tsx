@@ -18,7 +18,6 @@ export function ProjectCard({ project, detailed = false }: ProjectCardProps) {
   return (
     <TiltCard className="h-full">
       <Card className="group h-full flex flex-col hover:shadow-xl transition-all duration-300 overflow-hidden border-border/50 hover:border-primary/50">
-        {/* Project Image */}
         <div className="relative h-48 overflow-hidden bg-gradient-to-br from-primary/10 via-accent/10 to-primary/10">
           {project.image ? (
             <Image
@@ -51,7 +50,6 @@ export function ProjectCard({ project, detailed = false }: ProjectCardProps) {
             {project.description}
           </p>
           
-          {/* Key Features - Show more in detailed view */}
           {detailed && project.features && (
             <div className="mb-4 space-y-1">
               {project.features.slice(0, 2).map((feature, i) => (
@@ -63,7 +61,6 @@ export function ProjectCard({ project, detailed = false }: ProjectCardProps) {
             </div>
           )}
           
-          {/* Technologies */}
           <div className="flex flex-wrap gap-1.5 mb-4">
             {project.technologies.slice(0, 5).map((tech) => (
               <LavenderBadge key={tech}>
@@ -77,7 +74,6 @@ export function ProjectCard({ project, detailed = false }: ProjectCardProps) {
             )}
           </div>
           
-          {/* Action Buttons */}
           <div className="mt-auto flex gap-2 pt-4 border-t border-border/50">
             {project.githubUrl && (
               <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">

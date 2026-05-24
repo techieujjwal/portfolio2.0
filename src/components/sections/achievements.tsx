@@ -9,7 +9,6 @@ export function Achievements() {
   return (
     <section className="py-20 px-4">
       <div className="container mx-auto max-w-4xl">
-        {/* Section Header */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -26,7 +25,6 @@ export function Achievements() {
           </p>
         </motion.div>
 
-        {/* Achievements Cards */}
         <div className="space-y-6">
           {achievementsData.map((achievement, index) => (
             <motion.div
@@ -40,12 +38,11 @@ export function Achievements() {
             >
               <div className="p-6 rounded-xl border bg-card hover:shadow-lg transition-all">
                 <div className="flex items-start gap-4">
-                 
                   <div className="flex-1">
                     <h3 className="text-2xl font-semibold mb-1">{achievement.title}</h3>
                     <p className="text-primary font-medium mb-3">{achievement.organization}</p>
                     <p className="text-muted-foreground mb-4">{achievement.description}</p>                    
-                    {/* Impact Metrics */}
+                    
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {achievement.impact.map((impact, i) => (
                         <motion.div
@@ -68,7 +65,6 @@ export function Achievements() {
           ))}
         </div>
 
-        {/* Additional Stats */}
         <motion.div
           initial="hidden"
           whileInView="visible"

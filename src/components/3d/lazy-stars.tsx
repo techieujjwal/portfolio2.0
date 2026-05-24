@@ -2,7 +2,6 @@
 
 import { Suspense, lazy } from "react";
 
-// Lazy load the 3D component to prevent SSR issues
 const EnhancedStarsBackground = lazy(() => 
   import("@/components/3d/enhanced-stars").then(mod => ({ 
     default: mod.EnhancedStarsBackground 

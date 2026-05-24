@@ -1,42 +1,35 @@
-
 "use client";
 
 import Image from "next/image";
 import { useState } from "react";
 
-// Skill type
 interface Skill {
   name: string;
   logo: string;
 }
 
-// Bright icons for dark background
 const skills: Skill[] = [
   { name: "HTML", logo: "https://skillicons.dev/icons?i=html" },
   { name: "CSS", logo: "https://skillicons.dev/icons?i=css" },
   { name: "JavaScript", logo: "https://skillicons.dev/icons?i=js" },
-
   { name: "React", logo: "https://skillicons.dev/icons?i=react" },
   { name: "Next.js", logo: "https://skillicons.dev/icons?i=nextjs&theme=light" },
   { name: "Tailwind", logo: "https://skillicons.dev/icons?i=tailwind" },
-
   { name: "Material UI", logo: "https://skillicons.dev/icons?i=materialui" },
   { name: "Flask", logo: "https://skillicons.dev/icons?i=flask&theme=dark" },
   { name: "MySQL", logo: "https://skillicons.dev/icons?i=mysql" },
   { name: "Firebase", logo: "https://skillicons.dev/icons?i=firebase" },
   { name: "AWS", logo: "https://skillicons.dev/icons?i=aws" },
   { name: "Vercel", logo: "https://skillicons.dev/icons?i=vercel&theme=light" },
-
   { name: "Git", logo: "https://skillicons.dev/icons?i=git" },
   { name: "GitHub", logo: "https://skillicons.dev/icons?i=github&theme=light" },
   { name: "Python", logo: "https://skillicons.dev/icons?i=python" },
   { name: "Pandas", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
-{ name: "NumPy", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" },
-{ name: "Matplotlib", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/matplotlib/matplotlib-original.svg" },
+  { name: "NumPy", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" },
+  { name: "Matplotlib", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/matplotlib/matplotlib-original.svg" },
 ];
 
 export function SkillsShowcase() {
-  // auto split evenly based on screen
   const rows = [
     skills.slice(0, 6),
     skills.slice(6, 11),
@@ -71,14 +64,12 @@ export function SkillsShowcase() {
   );
 }
 
-// icon component
 function SkillIcon({ skill }: { skill: Skill }) {
   const [imgError, setImgError] = useState(false);
 
   return (
     <div className="flex flex-col items-center group">
       <div className="relative">
-        {/* glow effect */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -right-2 top-1/2 transform -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-white/20 to-transparent rounded-full blur-lg opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>

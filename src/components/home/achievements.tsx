@@ -1,88 +1,46 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { Award, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
-
-function AnimatedCounter({ value }: { value: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true });
-  const [count, setCount] = useState(0);
-
-  const numericMatch = value.match(/(\d+)/);
-  const targetNum = numericMatch ? parseInt(numericMatch[1]) : 0;
-  const prefix = value.substring(0, value.indexOf(numericMatch?.[0] || ""));
-  const postfix = value.substring(
-    value.indexOf(numericMatch?.[0] || "") +
-      (numericMatch?.[0]?.length || 0)
-  );
-
-  useEffect(() => {
-    if (!inView || targetNum === 0) return;
-
-    let current = 0;
-    const duration = 2000;
-    const steps = 60;
-    const increment = targetNum / steps;
-    const stepTime = duration / steps;
-
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= targetNum) {
-        setCount(targetNum);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(current));
-      }
-    }, stepTime);
-
-    return () => clearInterval(timer);
-  }, [inView, targetNum]);
-
-  if (targetNum === 0) {
-    return <span ref={ref}>{value}</span>;
-  }
-
-  return (
-    <span ref={ref}>
-      {prefix}
-      {inView ? count : 0}
-      {postfix}
-    </span>
-  );
-}
+import Image from "next/image";
 
 const achievements = [
   {
     icon: () => (
-      <img
+      <Image
         src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
         alt="Google Logo"
-        className="w-7 h-7 object-contain"
+        width={28}
+        height={28}
+        className="object-contain"
+        unoptimized
       />
     ),
     title: "Google Student Ambassador (2x)",
     description:
       "Selected again for the 2026–2027 cohort. Led workshops, tech sessions, and scaled student engagement across AI, Cloud, and Open Source initiatives.",
     metric: "2025 – 2027",
-    color: "rgba(78, 205, 196, 0.15)",
+    color: "rgba(99, 102, 241, 0.15)",
   },
   {
     icon: () => (
-      <img
+      <Image
         src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg"
         alt="IBM Logo"
-        className="w-6 h-6 object-contain brightness-125"
+        width={24}
+        height={24}
+        className="object-contain brightness-125"
+        unoptimized
       />
     ),
     title: "AI Intern @ IBM",
     description:
       "Worked on improving model accuracy for business automation tasks. Got to build and test systems that pulled insights from data and helped speed up internal processes.",
     metric: "Aug 2025 – Oct 2025",
-    color: "rgba(216, 178, 242, 0.15)",
+    color: "rgba(139, 92, 246, 0.15)",
   },
   {
     icon: Award,
@@ -90,7 +48,7 @@ const achievements = [
     description:
       "Built a fashion chatbot (Fashionista) that took voice, text, and image input and gave outfit suggestions based on weather, location, and event context. We placed Top 15 nationally.",
     metric: "Top 15",
-    color: "rgba(78, 205, 196, 0.15)",
+    color: "rgba(99, 102, 241, 0.15)",
   },
   {
     icon: Users,
@@ -98,7 +56,7 @@ const achievements = [
     description:
       "Co-founded a coding community from scratch. We run events, pair juniors with mentors, and help people get into open-source. It’s been cool watching it grow.",
     metric: "1700+ Members",
-    color: "rgba(216, 178, 242, 0.15)",
+    color: "rgba(139, 92, 246, 0.15)",
   },
 ];
 
@@ -118,7 +76,7 @@ export function Achievements() {
           className="absolute w-[500px] h-[500px] rounded-full opacity-[0.03]"
           style={{
             background:
-              "radial-gradient(circle, rgba(78,205,196,0.8) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(99,102,241,0.8) 0%, transparent 70%)",
             top: "10%",
             right: "5%",
           }}
@@ -129,7 +87,7 @@ export function Achievements() {
           className="absolute w-[400px] h-[400px] rounded-full opacity-[0.03]"
           style={{
             background:
-              "radial-gradient(circle, rgba(216,178,242,0.8) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(139,92,246,0.8) 0%, transparent 70%)",
             bottom: "10%",
             left: "5%",
           }}
@@ -187,7 +145,6 @@ export function Achievements() {
               style={{ perspective: 1000 }}
             >
               <Card className="relative group bg-gradient-to-b from-neutral-900/70 to-neutral-800/30 backdrop-blur-xl border border-white/[0.08] shadow-[0_0_25px_rgba(255,255,255,0.05)] rounded-2xl p-6 flex flex-col justify-between w-full h-full hover:border-white/20 transition-all duration-500 min-h-[360px] overflow-hidden">
-                
                 <div
                   className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                   style={{
@@ -211,7 +168,7 @@ export function Achievements() {
 
                   <div>
                     <h3 className="font-bold text-2xl mb-2">
-                      <AnimatedCounter value={achievement.metric} />
+                      {achievement.metric}
                     </h3>
                     <p className="font-semibold text-lg mb-2">
                       {achievement.title}

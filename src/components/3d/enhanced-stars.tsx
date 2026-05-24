@@ -23,7 +23,6 @@ function Stars({ count = 5000, radius = 1.5, ...props }: StarsProps) {
       ref.current.rotation.x -= delta / 10;
       ref.current.rotation.y -= delta / 15;
       
-      // React to mouse movement
       ref.current.rotation.x += mouse.x * 0.001;
       ref.current.rotation.y += mouse.y * 0.001;
     }
@@ -34,7 +33,7 @@ function Stars({ count = 5000, radius = 1.5, ...props }: StarsProps) {
       <Points ref={ref} positions={sphere} stride={3} frustumCulled={false} {...props}>
         <PointMaterial
           transparent
-          color="#C8A2D8"  // Lavender color
+          color="#8b5cf6"
           size={0.002}
           sizeAttenuation={true}
           depthWrite={false}
@@ -60,8 +59,8 @@ function FloatingOrb() {
       <mesh ref={ref} position={[0, 0, -0.5]}>
         <sphereGeometry args={[0.15, 32, 32]} />
         <meshStandardMaterial
-          color="#4ECDC4"  // Teal color
-          emissive="#4ECDC4"
+          color="#6366f1"
+          emissive="#6366f1"
           emissiveIntensity={0.5}
           transparent
           opacity={0.3}
@@ -70,6 +69,7 @@ function FloatingOrb() {
     </Float>
   );
 }
+
 export function EnhancedStarsBackground() {
   return (
     <div className="absolute inset-0 h-full w-full">
