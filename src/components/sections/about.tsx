@@ -63,14 +63,14 @@ export function About() {
 
             <div className="relative flex flex-col items-center">
               <div className="absolute -top-24">
-                <div className="relative w-75 h-75 rounded-full p-[4px] bg-gradient-to-br from-indigo-500 via-violet-500 to-slate-400 shadow-2xl">
+                <div className="relative w-72 h-72 rounded-full p-[4px] bg-gradient-to-br from-indigo-500 via-violet-500 to-slate-400 shadow-2xl">
                   <div className="rounded-full overflow-hidden w-full h-full relative">
                     <Image
-                      src="/me/me.png"
+                      src="/images/profile.jpg"
                       alt="Ujjwal Shukla"
                       fill
                       sizes="300px"
-                      className="object-cover"
+                      className="object-cover object-[center_25%]"
                       priority
                     />
                   </div>
