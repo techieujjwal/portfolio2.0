@@ -36,12 +36,17 @@ export function MagneticButton({
     y.set(0);
   };
 
+  const handleMouseEnter = () => {
+    import("@/lib/audio").then((mod) => mod.playHapticBeep());
+  };
+
   return (
     <motion.div
       ref={ref}
       style={{ x: xSpring, y: ySpring }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleMouseEnter}
       className={`${className} cursor-pointer`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
