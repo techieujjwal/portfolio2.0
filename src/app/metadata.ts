@@ -12,8 +12,8 @@ export const generateMetadata = (): Metadata => {
     keywords: [
       "Ujjwal Shukla",
       "Portfolio",
-      "Frontend Developer",
-      "Tech enthutiast",
+      "Full Stack Developer",
+      "Tech enthusiast",
       "AKTU",
       "Computer Science",
       "React",
@@ -64,10 +64,6 @@ export const generateMetadata = (): Metadata => {
         "max-image-preview": "large",
         "max-snippet": -1,
       },
-    },
-    verification: {
-      google: "your-google-verification-code",
-      yandex: "your-yandex-verification-code",
     },
   };
 };
