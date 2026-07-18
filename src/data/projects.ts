@@ -128,5 +128,32 @@ export const projects: Project[] = [
     image: "/images/student-result-analyzer/result.webp",
     githubUrl: "https://github.com/techieujjwal/Student-result-analyzer",
     category: "ai"
+  },
+  {
+    id: "portfolio-v2",
+    title: "Portfolio 2.0",
+    description:
+      "A highly interactive, design-focused portfolio built with Next.js 15, Tailwind v4, and Framer Motion.",
+    longDescription:
+      "A complete overhaul of my personal portfolio, shifting from a basic HTML/CSS design to a modern Next.js 15 stack. This project emphasizes performance, clean minimalism, complex asymmetric Bento Box grids, and seamless scroll-based animations powered by Framer Motion.",
+    technologies: [
+      "Next.js 15",
+      "React 19",
+      "Tailwind CSS v4",
+      "TypeScript",
+      "Framer Motion",
+      "Lucide Icons"
+    ],
+    features: [
+      "Dynamic alternating dark backgrounds on scroll",
+      "Floating hover-revealed profile interactions",
+      "Asymmetric Bento Grid for achievements",
+      "Smooth infinite CSS marquee for skills",
+      "100% Type-safe modern architecture"
+    ],
+    image: "/images/projects/portfolio-v2.png",
+    demoUrl: "http://localhost:3000",
+    githubUrl: "https://github.com/techieujjwal/portfolio2.0",
+    category: "web"
   }
 ];
