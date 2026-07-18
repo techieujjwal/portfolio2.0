@@ -11,3 +11,8 @@ export { StaggerContainer, StaggerItem } from './stagger-container';
 export { WaveText } from './wave-text';
 export { CursorGlow } from './cursor-glow';
 export { ScrollProgress } from './scroll-progress';
+export { Preloader } from './preloader';
+export { DarkCurveSweepUp, DarkCurveSweepDown } from './curve-transitions';
+export { MaskedHeading, WordReveal, TextRoll } from './animated-helpers';
+export { GsapText } from './gsap-text';
+
