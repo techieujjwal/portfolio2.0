@@ -53,15 +53,15 @@ export function Navbar() {
           className={cn(
             "fixed top-3 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50 rounded-2xl py-3 px-4 transition-all duration-500",
             scrolled
-              ? "bg-black/70 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-              : "bg-black/40 backdrop-blur-xl border border-white/5 shadow-lg"
+              ? "bg-[#0A0A0A]/80 backdrop-blur-2xl border border-white/[0.06] shadow-[0_8px_32px_rgba(0,0,0,0.6)]"
+              : "bg-[#0A0A0A]/40 backdrop-blur-xl border border-white/[0.03] shadow-lg"
           )}
         >
           <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
             <div
               className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-700"
               style={{
-                background: "linear-gradient(135deg, rgba(78,205,196,0.1) 0%, transparent 40%, rgba(216,178,242,0.1) 100%)",
+                background: "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 40%, rgba(255,255,255,0.03) 100%)",
               }}
             />
           </div>
@@ -72,7 +72,7 @@ export function Navbar() {
               onClick={() => setOpen(false)}
               className="font-display text-xl font-bold transition-all hover:opacity-80 group"
             >
-              <span className="gradient-text tracking-tight">
+              <span className="tracking-tight text-white">
                 Ujjwal Shukla
               </span>
             </Link>
@@ -92,8 +92,8 @@ export function Navbar() {
                       className={cn(
                         "text-sm font-medium transition-all px-3 py-1.5 rounded-lg",
                         active
-                          ? "text-primary bg-primary/10"
-                          : "text-muted-foreground hover:text-primary hover:bg-white/5"
+                          ? "text-white bg-white/10"
+                          : "text-zinc-400 hover:text-white hover:bg-white/5"
                       )}
                     >
                       {item.label}
@@ -102,11 +102,7 @@ export function Navbar() {
                     {active && (
                       <motion.div
                         layoutId="activeNavIndicator"
-                        className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-[2px] w-6 rounded-full"
-                        style={{
-                          background: "linear-gradient(90deg, var(--teal), var(--lavender))",
-                          boxShadow: "0 0 8px rgba(78, 205, 196, 0.5)",
-                        }}
+                        className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-[2px] w-6 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.5)]"
                         transition={{ type: "spring", stiffness: 400, damping: 30 }}
                       />
                     )}
@@ -125,10 +121,10 @@ export function Navbar() {
                   <Button
                     size="sm"
                     variant="default"
-                    className="rounded-xl font-semibold shadow-md relative overflow-hidden group"
+                    className="rounded-xl font-semibold shadow-md relative overflow-hidden group bg-white text-black hover:bg-zinc-200 border-transparent"
                   >
                     <span className="relative z-10">Resume</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary via-teal-light to-primary bg-[length:200%_100%] opacity-0 group-hover:opacity-100 group-hover:animate-[gradient-shift_2s_ease_infinite] transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[rgba(255,255,255,0.5)] via-[rgba(200,200,200,0.5)] to-[rgba(255,255,255,0.5)] bg-[length:200%_100%] opacity-0 group-hover:opacity-100 group-hover:animate-[gradient-shift_2s_ease_infinite] transition-opacity duration-300" />
                   </Button>
                 </motion.div>
               </a>
@@ -140,34 +136,34 @@ export function Navbar() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="rounded-full bg-muted/50 shadow-sm"
+                    className="rounded-full bg-white/[0.04] text-zinc-400 hover:bg-white/[0.08] hover:text-white border border-white/[0.06] shadow-sm"
                   >
-                    <Menu className="h-6 w-6" />
+                    <Menu className="h-5 w-5" />
                   </Button>
                 </SheetTrigger>
 
                 <SheetContent
                   side="right"
-                  className="p-0 bg-black/95 backdrop-blur-2xl text-white border-l border-white/10"
+                  className="p-0 bg-[#0A0A0A]/95 backdrop-blur-3xl text-white border-l border-white/[0.06]"
                 >
                   <VisuallyHidden>
                     <h2>Mobile Navigation Menu</h2>
                   </VisuallyHidden>
 
                   <div className="flex flex-col h-full">
-                    <div className="p-6 flex items-center justify-between">
+                    <div className="p-6 flex items-center justify-between border-b border-white/[0.04]">
                       <Link
                         href="/"
                         onClick={() => setOpen(false)}
                         className="font-display text-2xl font-bold"
                       >
-                        <span className="gradient-text">
+                        <span className="text-white">
                           Ujjwal Shukla
                         </span>
                       </Link>
                     </div>
 
-                    <div className="flex-1 px-6 py-6 flex flex-col gap-2">
+                    <div className="flex-1 px-6 py-8 flex flex-col gap-3">
                       {NAV_ITEMS.map((item, index) => (
                         <motion.div
                           key={item.href}
@@ -180,10 +176,10 @@ export function Navbar() {
                             href={item.href}
                             onClick={() => setOpen(false)}
                             className={cn(
-                              "block py-3 px-4 text-lg font-medium rounded-xl transition-all",
+                              "block py-3 px-4 text-lg font-medium rounded-xl transition-all border border-transparent",
                               pathname === item.href
-                                ? "text-primary bg-primary/10"
-                                : "text-muted-foreground hover:bg-white/5 hover:text-primary"
+                                ? "text-white bg-white/10 border-white/20"
+                                : "text-zinc-400 hover:bg-white/5 hover:text-white"
                             )}
                           >
                             {item.label}
@@ -192,7 +188,7 @@ export function Navbar() {
                       ))}
                     </div>
 
-                    <div className="px-6 pb-6">
+                    <div className="px-6 pb-8">
                       <a
                         href="/resume/resume.pdf"
                         target="_blank"
@@ -200,7 +196,7 @@ export function Navbar() {
                       >
                         <Button
                           size="lg"
-                          className="w-full rounded-xl font-semibold shadow-md"
+                          className="w-full rounded-xl font-bold shadow-md bg-white text-black hover:bg-zinc-200"
                         >
                           Resume
                         </Button>
