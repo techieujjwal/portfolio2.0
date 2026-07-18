@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { ReactNode, useRef } from "react";
+import { playHapticBeep } from "@/lib/audio";
 
 interface MagneticButtonProps {
   children: ReactNode;
@@ -37,7 +38,7 @@ export function MagneticButton({
   };
 
   const handleMouseEnter = () => {
-    import("@/lib/audio").then((mod) => mod.playHapticBeep());
+    playHapticBeep();
   };
 
   return (
