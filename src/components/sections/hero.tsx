@@ -1,224 +1,114 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ANIMATION_VARIANTS } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
-import { LazyStarsBackground } from "@/components/3d/lazy-stars";
 import {
   Typewriter,
   MagneticButton,
-  FloatingParticles
+  MaskedHeading
 } from "@/components/animations";
 import { ChevronDown } from "lucide-react";
-
-function OrbitingShapes() {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px]">
-        <div className="w-full h-full rounded-full border border-white/[0.03] animate-spin-slow" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className="w-2 h-2 rounded-full bg-teal/60 shadow-[0_0_15px_rgba(78,205,196,0.5)]" />
-        </div>
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
-          <div className="w-1.5 h-1.5 rounded-full bg-lavender/60 shadow-[0_0_15px_rgba(216,178,242,0.5)]" />
-        </div>
-      </div>
-
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[550px] md:h-[550px]">
-        <div className="w-full h-full rounded-full border border-white/[0.02] animate-spin-reverse" />
-        <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2">
-          <div className="w-2.5 h-2.5 rounded-full bg-teal/40 shadow-[0_0_20px_rgba(78,205,196,0.4)]" />
-        </div>
-      </div>
-
-      <motion.div
-        className="absolute top-[20%] right-[15%] w-16 h-16 border border-teal/10 rotate-45"
-        animate={{
-          y: [-10, 10, -10],
-          rotate: [45, 50, 45],
-          opacity: [0.3, 0.6, 0.3]
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-[25%] left-[10%] w-12 h-12 border border-lavender/10 rounded-full"
-        animate={{
-          y: [10, -10, 10],
-          scale: [1, 1.1, 1],
-          opacity: [0.2, 0.5, 0.2]
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute top-[30%] left-[20%] w-8 h-8 border border-teal/8"
-        animate={{
-          y: [-8, 8, -8],
-          x: [-5, 5, -5],
-          rotate: [0, 180, 360],
-          opacity: [0.2, 0.4, 0.2]
-        }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-[30%] right-[20%] w-6 h-6"
-        animate={{
-          y: [5, -15, 5],
-          x: [5, -5, 5],
-          opacity: [0.15, 0.35, 0.15]
-        }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-          <polygon points="12,2 22,22 2,22" stroke="rgba(216,178,242,0.3)" strokeWidth="1" />
-        </svg>
-      </motion.div>
-    </div>
-  );
-}
+import { StarsBackground } from "@/components/ui/stars-background";
 
 function AnimatedName() {
-  const text = "Ujjwal Shukla";
-  const chars = text.split("");
-
   return (
-    <motion.h1
-      className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
-      initial="hidden"
-      animate="visible"
-      variants={{
-        hidden: {},
-        visible: {
-          transition: {
-            staggerChildren: 0.04,
-            delayChildren: 0.3,
-          },
-        },
-      }}
-    >
-      {chars.map((char, i) => (
-        <motion.span
-          key={i}
-          className="inline-block text-foreground"
-          variants={{
-            hidden: {
-              opacity: 0,
-              y: 50,
-              rotateX: -90,
-              filter: "blur(10px)",
-            },
-            visible: {
-              opacity: 1,
-              y: 0,
-              rotateX: 0,
-              filter: "blur(0px)",
-              transition: {
-                duration: 0.6,
-                ease: [0.4, 0, 0.2, 1],
-              },
-            },
-          }}
-        >
-          {char === " " ? "\u00A0" : char}
-        </motion.span>
-      ))}
-    </motion.h1>
+    <div className="relative group inline-block">
+      <h1 className="relative z-20 font-display text-5xl md:text-7xl lg:text-8xl font-black mb-6 overflow-hidden select-none pb-4 tracking-tighter text-white cursor-pointer transition-colors duration-500 group-hover:text-white/20">
+        <MaskedHeading text="Ujjwal Shukla" delay={0.3} />
+      </h1>
+      
+      {/* Floating Hover Photo */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-64 md:w-64 md:h-80 pointer-events-none z-10 opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-90 transition-all duration-500 ease-out -rotate-6 group-hover:rotate-3">
+        <div className="w-full h-full relative rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/20">
+          <Image
+            src="/images/profile.jpg"
+            alt="Ujjwal Shukla"
+            fill
+            className="object-cover object-[center_25%]"
+            priority
+          />
+        </div>
+      </div>
+    </div>
   );
 }
 
 function ScrollIndicator() {
   return (
     <motion.div
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
+      className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-10"
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 2, duration: 0.8 }}
     >
-      <span className="text-xs text-muted-foreground tracking-[0.3em] uppercase">Scroll</span>
+      <span className="text-[10px] text-zinc-500 tracking-[0.4em] uppercase font-mono font-bold">Scroll to explore</span>
       <motion.div
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
       >
-        <ChevronDown className="h-5 w-5 text-primary/60" />
+        <ChevronDown className="h-4 w-4 text-zinc-400" />
       </motion.div>
-      <div className="w-px h-8 bg-gradient-to-b from-primary/40 to-transparent" />
     </motion.div>
   );
 }
 
 export function Hero() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 30 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 30 });
   const sectionRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 30;
-        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 30;
-        mouseX.set(x);
-        mouseY.set(y);
-      }
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
+  const { scrollY } = useScroll();
+  const scale = useTransform(scrollY, [0, 600], [1, 0.95]);
+  const opacity = useTransform(scrollY, [0, 500], [1, 0]);
+  const borderRadius = useTransform(scrollY, [0, 500], [0, 24]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden sticky top-0 z-0 bg-[#000000]"
     >
-      <LazyStarsBackground />
-      <FloatingParticles />
-      <OrbitingShapes />
+      <StarsBackground />
+
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)] pointer-events-none" />
 
       <motion.div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at 30% 50%, rgba(78,205,196,0.08) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(216,178,242,0.08) 0%, transparent 60%)",
-          x: springX,
-          y: springY,
-        }}
-      />
-
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.4)_100%)] pointer-events-none" />
-
-      <div className="container mx-auto px-4 py-20 relative z-10">
+        style={{ scale, opacity, borderRadius }}
+        className="container mx-auto px-4 py-20 relative z-10 origin-top text-center max-w-5xl flex flex-col items-center justify-center"
+      >
         <motion.div
           initial="hidden"
           animate="visible"
-          className="text-center max-w-4xl mx-auto"
+          className="mx-auto flex flex-col items-center"
         >
-          <motion.p
+
+
+          <motion.div
             variants={ANIMATION_VARIANTS.fadeDown}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-lg md:text-xl text-muted-foreground mb-4"
+            className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs tracking-[0.2em] uppercase font-mono text-zinc-400"
           >
-            Hey there, I&apos;m
-          </motion.p>
+            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+            Hello, I am
+          </motion.div>
 
           <AnimatedName />
 
           <motion.div
             variants={ANIMATION_VARIANTS.fadeUp}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="text-xl md:text-2xl text-muted-foreground mb-10"
+            className="text-xl md:text-3xl text-zinc-400 mb-12 font-light tracking-wide"
           >
             <span className="block mt-2">
               <Typewriter
                 words={[
-                  "Frontend Developer",
+                  "Full Stack Developer",
                   "Cybersecurity Enthusiast",
                   "Community Builder",
                   "Open Source Contributor"
                 ]}
-                className="text-primary font-semibold"
+                className="text-zinc-300 font-medium"
               />
             </span>
           </motion.div>
@@ -226,17 +116,12 @@ export function Hero() {
           <motion.div
             variants={ANIMATION_VARIANTS.fadeUp}
             transition={{ duration: 0.6, delay: 1 }}
-            className="flex flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0"
+            className="flex flex-row gap-4 sm:gap-6 justify-center px-4 sm:px-0"
           >
             <MagneticButton>
-              <Button asChild size="lg" className="text-sm sm:text-base px-4 sm:px-8 relative overflow-hidden group">
+              <Button asChild size="lg" className="h-14 px-8 text-sm sm:text-base font-bold rounded-full bg-white text-black hover:bg-zinc-200 hover:scale-105 transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)]">
                 <Link href="/projects">
-                  <span className="relative z-10">View Projects</span>
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-teal/20 via-lavender/20 to-teal/20"
-                    animate={{ x: ["-100%", "100%"] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                  />
+                  View Projects
                 </Link>
               </Button>
             </MagneticButton>
@@ -246,14 +131,14 @@ export function Hero() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="text-sm sm:text-base px-4 sm:px-8 border-white/10 hover:bg-white/5 hover:border-white/20 transition-all"
+                className="h-14 px-8 text-sm sm:text-base font-bold rounded-full bg-transparent border-white/20 text-white hover:bg-white/10 transition-all"
               >
                 <Link href="/about">About Me</Link>
               </Button>
             </MagneticButton>
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
 
       <ScrollIndicator />
     </section>
