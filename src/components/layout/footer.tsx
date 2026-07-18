@@ -72,7 +72,8 @@ export function Footer() {
             <ul className="flex flex-col gap-3 font-sans font-semibold text-[1rem]">
               {[
                 { name: "LinkedIn ↗", url: SITE_CONFIG.links.linkedin },
-                { name: "GitHub ↗", url: SITE_CONFIG.links.github }
+                { name: "GitHub ↗", url: SITE_CONFIG.links.github },
+                { name: "Phone ↗", url: "tel:+918882194557" }
               ].map((item) => (
                 <li key={item.name}>
                   <TextRoll 

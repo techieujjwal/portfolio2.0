@@ -43,7 +43,7 @@ export function About() {
             <div className="space-y-6 text-lg leading-relaxed">
               <p>
                 Hi! I&apos;m Ujjwal Shukla, currently pursuing my B.Tech in Computer Science Engineering
-                at Lloyd Institute of Engineering and Technology, Delhi. I like building
+                at Lloyd Institute of Engineering and Technology, Greater Noida, UP. I like building
                 things for the web, getting involved in communities, and figuring out how
                 stuff works end-to-end.
               </p>
