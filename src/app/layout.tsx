@@ -9,6 +9,7 @@ import { ThemeProvider } from "next-themes";
 import { ClientLayout } from "./client-layout";
 import { generateMetadata } from "./metadata";
 import { JsonLd } from "@/components/seo/json-ld";
+import { CustomCursor } from "@/components/ui/custom-cursor";
 
 export const metadata = generateMetadata();
 
@@ -46,6 +47,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ClientLayout>
+            <CustomCursor />
             <Suspense fallback={null}>
               <NavigationEvents />
             </Suspense>
