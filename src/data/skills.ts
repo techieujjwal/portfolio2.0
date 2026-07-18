@@ -24,7 +24,7 @@ export const skillsData: SkillCategory[] = [
     ]
   },
   {
-    title: "Frontend Development",
+    title: "Full Stack Development",
     icon: "🎨",
     skills: [
       { name: "React.js", level: 90 },
