@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -15,14 +15,44 @@ import { ChevronDown } from "lucide-react";
 import { StarsBackground } from "@/components/ui/stars-background";
 
 function AnimatedName() {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springConfig = { damping: 20, stiffness: 100, mass: 0.5 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    const x = (clientX / innerWidth - 0.5) * 40; // max 20px shift
+    const y = (clientY / innerHeight - 0.5) * 40;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   return (
-    <div className="relative group inline-block">
-      <h1 className="relative z-20 font-display text-5xl md:text-7xl lg:text-8xl font-black mb-6 overflow-hidden select-none pb-4 tracking-tighter text-white cursor-pointer transition-colors duration-500 group-hover:text-white/20">
+    <div 
+      className="relative group inline-block"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <motion.h1 
+        style={{ x: smoothX, y: smoothY }}
+        className="relative z-20 font-display text-5xl md:text-7xl lg:text-8xl font-black mb-6 overflow-hidden select-none pb-4 tracking-tighter text-white cursor-pointer transition-colors duration-500 group-hover:text-white/20"
+      >
         <MaskedHeading text="Ujjwal Shukla" delay={0.3} />
-      </h1>
+      </motion.h1>
       
-      {/* Floating Hover Photo */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-64 md:w-64 md:h-80 pointer-events-none z-10 opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-90 transition-all duration-500 ease-out -rotate-6 group-hover:rotate-3">
+      {/* Floating Hover Photo with Inverse Parallax */}
+      <motion.div 
+        style={{ x: useTransform(smoothX, x => -x * 1.5), y: useTransform(smoothY, y => -y * 1.5) }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-64 md:w-64 md:h-80 pointer-events-none z-10 opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-90 transition-all duration-500 ease-out -rotate-6 group-hover:rotate-3"
+      >
         <div className="w-full h-full relative rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/20">
           <Image
             src="/images/profile.jpg"
@@ -32,7 +62,7 @@ function AnimatedName() {
             priority
           />
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

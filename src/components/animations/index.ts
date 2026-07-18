@@ -15,4 +15,5 @@ export { Preloader } from './preloader';
 export { DarkCurveSweepUp, DarkCurveSweepDown } from './curve-transitions';
 export { MaskedHeading, WordReveal, TextRoll } from './animated-helpers';
 export { GsapText } from './gsap-text';
+export { LiquidImage } from './liquid-image';
 

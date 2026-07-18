@@ -7,6 +7,7 @@ import Image from "next/image";
 import { ArrowUpRight, Code2, Github } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { projects as allProjects } from "@/data/projects";
+import { LiquidImage } from "@/components/animations";
 
 const BG = "#1C1B1A";
 
@@ -151,16 +152,10 @@ export function FeaturedProjects() {
                     <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden border border-white/10 bg-[#0A0A0A] group shadow-2xl">
                       {project.image ? (
                         <div className="relative w-full h-full">
-                          <Image
+                          <LiquidImage
                             src={project.image}
                             alt={project.title}
-                            fill
-                            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter grayscale contrast-110 brightness-75 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100"
-                            sizes="(max-w-768px) 100vw, 50vw"
-                            onError={(e) => {
-                              const target = e.target as HTMLElement;
-                              target.style.display = "none";
-                            }}
+                            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                           />
                         </div>
                       ) : (
