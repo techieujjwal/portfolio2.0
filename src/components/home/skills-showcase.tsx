@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
-import { motion, useScroll, useTransform, LayoutGroup, AnimatePresence } from "framer-motion";
-import { ShootingStars } from "@/components/ui/shooting-stars";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { StarsBackground } from "@/components/ui/stars-background";
 
 interface Skill {
@@ -11,152 +10,92 @@ interface Skill {
   logo: string;
 }
 
-const skills: Skill[] = [
+const allSkills: Skill[] = [
   { name: "HTML", logo: "https://skillicons.dev/icons?i=html" },
   { name: "CSS", logo: "https://skillicons.dev/icons?i=css" },
   { name: "JavaScript", logo: "https://skillicons.dev/icons?i=js" },
   { name: "TypeScript", logo: "https://skillicons.dev/icons?i=ts" },
   { name: "React", logo: "https://skillicons.dev/icons?i=react" },
-  { name: "Next.js", logo: "https://skillicons.dev/icons?i=nextjs&theme=light" },
+  { name: "Next.js", logo: "https://skillicons.dev/icons?i=nextjs&theme=dark" },
   { name: "Tailwind", logo: "https://skillicons.dev/icons?i=tailwind" },
   { name: "Material UI", logo: "https://skillicons.dev/icons?i=materialui" },
+  { name: "Git", logo: "https://skillicons.dev/icons?i=git" },
+  { name: "GitHub", logo: "https://skillicons.dev/icons?i=github&theme=dark" },
   { name: "Flask", logo: "https://skillicons.dev/icons?i=flask&theme=dark" },
   { name: "MySQL", logo: "https://skillicons.dev/icons?i=mysql" },
-  { name: "Firebase", logo: "https://skillicons.dev/icons?i=firebase" },
-  { name: "AWS", logo: "https://skillicons.dev/icons?i=aws" },
-  { name: "Vercel", logo: "https://skillicons.dev/icons?i=vercel&theme=light" },
-  { name: "Git", logo: "https://skillicons.dev/icons?i=git" },
-  { name: "GitHub", logo: "https://skillicons.dev/icons?i=github&theme=light" },
+  { name: "Firebase", logo: "https://skillicons.dev/icons?i=firebase&theme=dark" },
+  { name: "AWS", logo: "https://skillicons.dev/icons?i=aws&theme=dark" },
+  { name: "Vercel", logo: "https://skillicons.dev/icons?i=vercel&theme=dark" },
   { name: "Python", logo: "https://skillicons.dev/icons?i=python" },
-  { name: "Pandas", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
-  { name: "NumPy", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" },
-  { name: "Matplotlib", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/matplotlib/matplotlib-original.svg" },
+  { name: "Pandas", logo: "https://skillicons.dev/icons?i=react" },
+  { name: "NumPy", logo: "https://skillicons.dev/icons?i=react" },
+  { name: "Matplotlib", logo: "https://skillicons.dev/icons?i=react" },
 ];
 
+// Split skills into two rows for the marquee
+const firstRow = allSkills.slice(0, 10);
+const secondRow = allSkills.slice(10, 19);
+
 export function SkillsShowcase() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
-  const x = useTransform(scrollYProgress, [0, 0.72], ["60vw", "-120%"]);
-  const [isGrid, setIsGrid] = useState(false);
-
-  useEffect(() => {
-    return scrollYProgress.onChange((latest) => {
-      setIsGrid(latest > 0.72);
-    });
-  }, [scrollYProgress]);
-
-  const rows = [
-    skills.slice(0, 7),
-    skills.slice(7, 12),
-    skills.slice(12, 16),
-    skills.slice(16, 19),
-  ];
-
   return (
-    <div ref={containerRef} className="relative h-[200vh]">
-      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center bg-black text-white overflow-hidden py-12 px-6">
-        <ShootingStars />
-        <StarsBackground />
+    <section className="relative z-30 bg-[#1C1B1A] rounded-t-[2.5rem] mt-[-2rem] py-24 md:py-32 overflow-hidden flex flex-col items-center justify-center min-h-[70vh]">
+      <StarsBackground />
 
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div
-            className="absolute w-[600px] h-[600px] rounded-full opacity-[0.04]"
-            style={{
-              background: "radial-gradient(circle, rgba(99,102,241,0.8) 0%, transparent 70%)",
-              top: "20%",
-              left: "10%",
-              animation: "float-slow 15s ease-in-out infinite",
-            }}
-          />
-          <div
-            className="absolute w-[500px] h-[500px] rounded-full opacity-[0.04]"
-            style={{
-              background: "radial-gradient(circle, rgba(139,92,246,0.8) 0%, transparent 70%)",
-              bottom: "10%",
-              right: "10%",
-              animation: "float-slow 18s ease-in-out infinite reverse",
-            }}
-          />
+      {/* Radial Gradient for depth */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(28,27,26,0.5),transparent_85%)] pointer-events-none" />
+
+      <motion.div
+        initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+        className="relative z-10 text-center mb-20 px-6"
+      >
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.25em] mb-6">
+          <span className="w-1.5 h-1.5 rounded-full bg-zinc-400" />
+          <span className="font-mono text-zinc-400">Toolkit</span>
+        </div>
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 tracking-tight text-white uppercase">
+          Technical <span className="text-zinc-500">Skills</span>
+        </h2>
+        <p className="text-zinc-400 text-lg font-light max-w-xl mx-auto">
+          The technologies and frameworks I use to build scalable web applications.
+        </p>
+      </motion.div>
+
+      {/* Infinite Marquee Container */}
+      <div className="relative z-10 w-full max-w-[100vw] overflow-hidden flex flex-col gap-8 md:gap-12 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+        
+        {/* Row 1: Moves Left */}
+        <div className="flex w-max">
+          <motion.div
+            className="flex gap-8 md:gap-12 pr-8 md:pr-12"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
+          >
+            {/* Duplicate the array twice for seamless looping */}
+            {[...firstRow, ...firstRow].map((skill, index) => (
+              <SkillIcon key={`${skill.name}-row1-${index}`} skill={skill} />
+            ))}
+          </motion.div>
         </div>
 
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.7),transparent_85%)] pointer-events-none" />
-
-        <motion.div
-          initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-          className="relative z-10 text-center mb-16"
-        >
-          <h2 className="text-5xl md:text-6xl font-extrabold mb-3 tracking-tight gradient-text">
-            Technical Skills
-          </h2>
-          <p className="text-gray-400 text-lg font-light">
-            Tools and technologies I work with daily
-          </p>
-        </motion.div>
-
-        <div className="relative z-10 w-full max-w-6xl flex justify-center items-center overflow-visible min-h-[300px]">
-          <LayoutGroup>
-            <AnimatePresence mode="popLayout">
-              {!isGrid ? (
-                <motion.div
-                  key="marquee"
-                  layout
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex flex-row flex-nowrap gap-12 whitespace-nowrap overflow-visible select-none py-4"
-                  style={{ x }}
-                >
-                  {skills.map((skill) => (
-                    <motion.div
-                      layout
-                      key={skill.name}
-                      transition={{ type: "spring", stiffness: 120, damping: 20 }}
-                    >
-                      <SkillIcon skill={skill} />
-                    </motion.div>
-                  ))}
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="grid"
-                  layout
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
-                  className="flex flex-col items-center justify-center space-y-8 md:space-y-12 w-full py-4"
-                >
-                  {rows.map((row, i) => (
-                    <div key={i} className="flex flex-wrap justify-center gap-8 md:gap-12">
-                      {row.map((skill) => (
-                        <motion.div
-                          layout
-                          key={skill.name}
-                          transition={{ type: "spring", stiffness: 120, damping: 20 }}
-                        >
-                          <SkillIcon skill={skill} />
-                        </motion.div>
-                      ))}
-                    </div>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </LayoutGroup>
+        {/* Row 2: Moves Right */}
+        <div className="flex w-max self-end">
+          <motion.div
+            className="flex gap-8 md:gap-12 pr-8 md:pr-12"
+            animate={{ x: ["-50%", "0%"] }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
+          >
+            {/* Duplicate the array twice for seamless looping */}
+            {[...secondRow, ...secondRow].map((skill, index) => (
+              <SkillIcon key={`${skill.name}-row2-${index}`} skill={skill} />
+            ))}
+          </motion.div>
         </div>
 
-        <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-black via-transparent to-transparent pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none" />
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -164,36 +103,43 @@ function SkillIcon({ skill }: { skill: Skill }) {
   const [imgError, setImgError] = useState(false);
 
   return (
-    <div className="flex flex-col items-center group w-16 h-24">
+    <motion.div 
+      whileHover={{ y: -5 }}
+      className="flex flex-col items-center group w-20 h-28 md:w-24 md:h-32 shrink-0 cursor-pointer"
+    >
       <div className="relative">
+        {/* Hover Glow */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -right-2 top-1/2 transform -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-white/20 to-transparent rounded-full blur-lg opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="absolute -inset-4 bg-white/5 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
         </div>
 
-        <div className="relative z-10">
+        {/* Glassmorphic Icon Container */}
+        <div className="relative z-10 p-3 md:p-4 rounded-2xl bg-[#111111] border border-white/5 group-hover:border-white/20 group-hover:bg-[#1A1A1A] transition-all duration-300 shadow-xl">
           {imgError ? (
-            <div className="w-16 h-16 flex items-center justify-center bg-gray-800 rounded-full">
-              <span className="text-xs text-white text-center px-1">
+            <div className="w-10 h-10 md:w-14 md:h-14 flex items-center justify-center bg-black rounded-lg">
+              <span className="text-[10px] text-zinc-400 text-center px-1 font-mono">
                 {skill.name}
               </span>
             </div>
           ) : (
-            <Image
-              src={skill.logo}
-              alt={skill.name}
-              width={64}
-              height={64}
-              className="object-contain transition-transform duration-300 group-hover:scale-110"
-              unoptimized
-              onError={() => setImgError(true)}
-            />
+            <div className="w-10 h-10 md:w-14 md:h-14 relative flex items-center justify-center">
+              <Image
+                src={skill.logo}
+                alt={skill.name}
+                width={56}
+                height={56}
+                className="object-contain transition-transform duration-500 group-hover:scale-110 drop-shadow-[0_0_12px_rgba(255,255,255,0.05)]"
+                unoptimized
+                onError={() => setImgError(true)}
+              />
+            </div>
           )}
         </div>
       </div>
 
-      <span className="mt-2 text-sm text-gray-400 group-hover:text-primary transition-colors duration-300 whitespace-nowrap">
+      <span className="mt-4 text-[10px] md:text-xs font-mono font-semibold tracking-wider text-zinc-500 group-hover:text-white transition-colors duration-300 whitespace-nowrap opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0">
         {skill.name}
       </span>
-    </div>
+    </motion.div>
   );
 }
