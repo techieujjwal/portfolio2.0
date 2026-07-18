@@ -37,7 +37,7 @@ export function MagneticButton({
   };
 
   const handleMouseEnter = () => {
-    import("@/lib/audio").then((mod) => mod.playHapticBeep());
+    // Audio removed per user request
   };
 
   return (
