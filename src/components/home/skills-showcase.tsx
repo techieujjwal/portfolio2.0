@@ -27,9 +27,9 @@ const allSkills: Skill[] = [
   { name: "AWS", logo: "https://skillicons.dev/icons?i=aws&theme=dark" },
   { name: "Vercel", logo: "https://skillicons.dev/icons?i=vercel&theme=dark" },
   { name: "Python", logo: "https://skillicons.dev/icons?i=python" },
-  { name: "Pandas", logo: "https://skillicons.dev/icons?i=react" },
-  { name: "NumPy", logo: "https://skillicons.dev/icons?i=react" },
-  { name: "Matplotlib", logo: "https://skillicons.dev/icons?i=react" },
+  { name: "Pandas", logo: "https://skillicons.dev/icons?i=pinia" },
+  { name: "NumPy", logo: "https://skillicons.dev/icons?i=netlify" },
+  { name: "matplotlib", logo: "https://skillicons.dev/icons?i=netlify" },
 ];
 
 // Split skills into two rows for the marquee
