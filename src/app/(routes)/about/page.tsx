@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { About } from "@/components/sections/about";
 import { SkillsShowcase} from "@/components/sections/skills";
-import { Achievements } from "@/components/sections/achievements";
+
 
 export const metadata: Metadata = {
   title: "About | Ujjwal Shukla",
@@ -14,7 +14,7 @@ export default function AboutPage() {
       <div className="pt-20">
         <About />
         <SkillsShowcase />
-        <Achievements />
+        
       </div>
     </>
   );

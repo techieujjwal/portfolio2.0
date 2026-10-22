@@ -81,40 +81,6 @@ export const experienceData: Experience[] = [
     type: "internship"
   },
 
-  {
-    id: "coders-circle-cofounder",
-    company: "Coders Circle",
-    role: "Co-Founder",
-    duration: "July 2025 - Present",
-    location: "Greater Noida, India · Remote",
-    description:
-      "Co-founded and actively managing Coders Circle, a fast-growing student-led tech community focused on improving technical skills and collaboration.",
-    achievements: [
-      "Scaled the community to 1700+ students within the first month",
-      "Implemented effective community engagement strategies and learning initiatives",
-      "Managed project curation and technical collaborations",
-      "Built a strong peer-learning environment for developers and tech enthusiasts",
-      "Created multiple projects with the member of the community "
-    ],
-    technologies: ["Community Building", "Leadership", "Team Management", "Growth Strategy"],
-    type: "full-time"
-  },
-  {
-    id: "devsphere-event-manager",
-    company: "DevSphereIndia",
-    role: "Event Manager",
-    duration: "Sep 2025 - Dec 2025",
-    location: "Delhi, India · Hybrid",
-    description:
-      "Working as an Event Manager intern, planning and managing technical events, hackathons, and student-focused workshops to enhance engagement and participation.",
-    achievements: [
-      "Planned and managed multiple technical events, hackathons, and workshops for student communities",
-      "Coordinated with speakers, mentors, and participants to ensure smooth execution",
-      "Collaborated with the event team to improve outreach and participation strategies",
-      "Built hands-on experience in hybrid (online + offline) community management",
-      "Learned about event management on ground "
-    ],
-    technologies: ["Event Management", "Stakeholder Coordination", "Community Building", "Public Speaking"],
-    type: "internship"
-  }
+  
+  
 ];

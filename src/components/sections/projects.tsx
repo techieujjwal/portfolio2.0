@@ -98,20 +98,13 @@ export function Projects() {
                 className="group relative flex flex-col rounded-3xl bg-[#0A0A0A] border border-white/5 overflow-hidden hover:border-white/20 transition-all duration-700"
               >
                 <div className="relative h-64 overflow-hidden bg-black/50 border-b border-white/5">
-                  {project.image ? (
-                    <Image
+                  <Image
                       src={project.image}
                       alt={project.title}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                  ) : (
-                    <div className="absolute inset-0 flex items-center justify-center bg-black">
-                      <span className="text-white/20 font-mono text-sm">No Image Provided</span>
-                    </div>
-                  )}
-                  
                   <div className="absolute top-4 left-4">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/10 text-[10px] uppercase tracking-widest text-white font-mono">
                       {categoryIcons[project.category]}

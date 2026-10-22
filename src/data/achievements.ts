@@ -8,15 +8,14 @@ export interface Achievement {
 
 export const achievementsData: Achievement[] = [
   {
-    id: "coders-circle",
-    title: "Co-Founder",
-    organization: "Coders Circle",
-    description: "Built and scaled a growing tech community focused on coding culture, collaboration, and peer learning.",
+    id: "",
+    title: "",
+    organization: "",
+    description: "",
     impact: [
-      "Created a tech community of 1500+ students and developers",
-      "Organized tech sessions, networking events, and collaborative coding spaces",
-      "Encouraged open-source contributions and project-based learning",
-      "Built leadership and community engagement initiatives"
+      "",
+      "",
+      
     ],
   }
 ];

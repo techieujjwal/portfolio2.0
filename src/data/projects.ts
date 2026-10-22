@@ -13,30 +13,55 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "drishti",
+    title: "Drishti | AI-Powered Public Project Intelligence Platform",
+    description:
+      "AI-powered platform that surfaces anomalies, fraud indicators and inefficiencies in public project implementation.",
+    longDescription:
+      "Drishti is an AI-powered public-project intelligence platform built to make government spending observable. It ingests data on 56K+ public works and runs risk and anomaly analysis to flag fraud indicators and implementation inefficiencies. Every finding ships with an explainable analysis trail rather than a black-box score, and a citizen evidence workflow lets people report ground-truth issues directly. Role-based access control keeps official and citizen views separate, and the whole system is exposed through REST APIs on top of PostgreSQL-backed analytics with a production deployment.",
+    technologies: [
+      "Next.js",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "REST APIs",
+      "Role-Based Access",
+      "Anomaly Detection"
+    ],
+    features: [
+      "Risk and anomaly analysis across 56K+ public works records",
+      "Explainable findings instead of opaque risk scores",
+      "Citizen evidence workflow for reporting ground-truth issues",
+      "Authentication with role-based access control",
+      "PostgreSQL-backed analytics exposed via REST APIs",
+      "Production deployment"
+    ],
+    image: "/images/projects/drishti/drishti.webp",
+    category: "ai"
+  },
+  {
     id: "syncverse",
     title: "SyncVerse | AI-Powered Roadmap & Career Navigator",
     description:
-      "Web platform that helps students and developers generate personalized tech roadmaps and guidance.",
+      "Web platform that turns a student's current skills and goals into a personalized, milestone-based tech roadmap.",
     longDescription:
-      "SyncVerse is an edtech platform designed to help students and developers map out their goals. It allows users to input their current status and generates learning roadmaps, resources, and plans. Built with React and TypeScript and using AI models under the hood, SyncVerse focuses on a clean UI and practical guidance for each person's needs.",
+      "SyncVerse is an edtech platform that turns a student's current skills and goals into a concrete learning plan. Users describe their background and target role, and the app generates step-by-step roadmaps with milestones and checkpoints for tracks like web, AI, and DSA, pulling resources along the way. Roadmaps are produced through prompt-engineered LLM calls with a REST API layer, and forms capture each user's context. Built with React, TypeScript, and Tailwind with shadcn/ui and Aceternity components, and structured to plug into Supabase for auth and persistence.",
     technologies: [
       "TypeScript",
       "React",
       "Vite",
       "Tailwind CSS",
       "shadcn/ui",
-      "Aceternity UI",
-      "Supabase",
       "REST APIs",
       "Prompt Engineering",
-      "OpenAI (LLM-powered Roadmaps)"
+      "Supabase"
     ],
     features: [
       "Goal-based roadmap generation for different tech stacks (web, AI, DSA, etc.)",
       "Step-by-step structured paths with milestones and checkpoints",
-      "Clean, modern UI using shadcn/ui and Aceternity components",
-      "Forms and inputs to capture user background and preferences",
-      "Potential integration with Supabase for auth and persistence",
+      "Prompt-engineered LLM integration behind a REST API layer",
+      "Forms that capture user background and preferences",
+      "Supabase-ready structure for auth and persistence",
       "Responsive layout optimized for both desktop and mobile"
     ],
     image: "/images/projects/syncverse/syncverse.webp",
@@ -133,16 +158,16 @@ export const projects: Project[] = [
     id: "portfolio-v2",
     title: "Portfolio 2.0",
     description:
-      "A highly interactive, design-focused portfolio built with Next.js 15, Tailwind v4, and Framer Motion.",
+      "This website — a highly interactive, design-focused portfolio built with Next.js 15, Tailwind v4, and Framer Motion.",
     longDescription:
-      "A complete overhaul of my personal portfolio, shifting from a basic HTML/CSS design to a modern Next.js 15 stack. This project emphasizes performance, clean minimalism, complex asymmetric Bento Box grids, and seamless scroll-based animations powered by Framer Motion.",
+      "A complete overhaul of my first portfolio, shifting from a basic HTML/CSS design to a modern Next.js 15 stack. This project emphasizes performance, clean minimalism, complex asymmetric Bento Box grids, and seamless scroll-based animations powered by Framer Motion.",
     technologies: [
       "Next.js 15",
       "React 19",
       "Tailwind CSS v4",
       "TypeScript",
       "Framer Motion",
-      "Lucide Icons"
+      "Lenis Smooth Scroll"
     ],
     features: [
       "Dynamic alternating dark backgrounds on scroll",
@@ -152,7 +177,7 @@ export const projects: Project[] = [
       "100% Type-safe modern architecture"
     ],
     image: "/images/projects/portfolio-v2.png",
-    demoUrl: "http://localhost:3000",
+    demoUrl: "https://ujjwalshukla.com",
     githubUrl: "https://github.com/techieujjwal/portfolio2.0",
     category: "web"
   }
