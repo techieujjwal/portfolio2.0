@@ -51,15 +51,7 @@ const achievements = [
     metric: "Top 15",
     className: "md:col-span-1 md:row-span-1", // Standard card
   },
-  {
-    id: "coders",
-    icon: Users,
-    title: "Coders Circle Founder",
-    description:
-      "Co-founded a massive coding community from scratch. We run events, pair juniors with mentors, and help people get into open-source. A thriving ecosystem.",
-    metric: "1700+ Members",
-    className: "md:col-span-2 md:row-span-1", // Wide bottom card
-  },
+  
 ];
 
 export function Achievements() {

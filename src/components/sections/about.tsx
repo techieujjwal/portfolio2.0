@@ -55,7 +55,7 @@ export function About() {
               </p>
 
               <p>
-                As the Co-founder of Coders Circle, a tech community with 1500+ developers and students,
+                As the Co-founder of Coders Circle, a tech community with 2000+ developers and students,
                 I&apos;ve been building a strong coding culture through events, mentorship, and collaborative
                 learning, helping students grow individually and as a community.
               </p>
