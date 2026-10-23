@@ -34,6 +34,26 @@ export const experienceData: Experience[] = [
     ],
     type: "part-time"
   },
+  {
+    id: "Service now associate developer",
+    company: "CONSULTIQUO",
+    role: "ASSOCIATE DEVELOPER",
+    duration: "july 2026 - present",
+    location: "Delhi, India · hybrid",
+    description:
+      "Working as associate developer at consultiquo on the service now language and creating various automations and working with the team ",
+    achievements: [
+      "created multiple automations on process shortening ",
+      "got hands on experience on service now ",
+      "Helped students gain knowledge about ai and its usage in daily life "
+    ],
+    technologies: [
+      "Servicenow",
+      "automation",
+      "Api management"
+    ],
+    type: "Internship"
+  },
 
   {
     id: "ibm-ai-intern",
